@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     //VARIABLES
     var pickerDataSource = ["Test"]
@@ -36,11 +36,29 @@ class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         return pickerDataSource[row]
     }
     
+    func textFieldDidChange(textField: UITextField){
+        
+        let text = textField.text
+        
+        if(text?.utf16.count == 2){
+            switch textField {
+            case leftTextField:
+                middleTextField.becomeFirstResponder()
+            case middleTextField:
+                rightTextField.becomeFirstResponder()
+            case rightTextField:
+                rightTextField.resignFirstResponder()
+            default:
+                break
+            }
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //test
+        //Set num pad default for all text fields
         leftTextField.keyboardType = UIKeyboardType.numberPad
         middleTextField.keyboardType = UIKeyboardType.numberPad
         rightTextField.keyboardType = UIKeyboardType.numberPad
@@ -57,9 +75,17 @@ class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             self.middleTextField.center.y -= 400
         }
         
-        //test
+        //Initialize picker view
         self.inputPickerView.dataSource = self;
         self.inputPickerView.delegate = self;
+        
+        //Initialize text fields for auto switch
+        leftTextField.delegate = self
+        leftTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+        middleTextField.delegate = self
+        middleTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+        rightTextField.delegate = self
+        rightTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
     }
 
     override func didReceiveMemoryWarning() {
