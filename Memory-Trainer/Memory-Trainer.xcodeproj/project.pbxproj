@@ -15,6 +15,7 @@
 		B44F6E821EEE259D00BE43BF /* Memory_TrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E811EEE259D00BE43BF /* Memory_TrainerTests.swift */; };
 		B44F6E8D1EEE259E00BE43BF /* Memory_TrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E8C1EEE259E00BE43BF /* Memory_TrainerUITests.swift */; };
 		B44F6E9B1EEE263600BE43BF /* NumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */; };
+		B44F6E9D1EEE2D6500BE43BF /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		B44F6E8C1EEE259E00BE43BF /* Memory_TrainerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory_TrainerUITests.swift; sourceTree = "<group>"; };
 		B44F6E8E1EEE259E00BE43BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersViewController.swift; sourceTree = "<group>"; };
+		B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				B44F6E751EEE259D00BE43BF /* LaunchScreen.storyboard */,
 				B44F6E781EEE259D00BE43BF /* Info.plist */,
 				B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */,
+				B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */,
 			);
 			path = "Memory-Trainer";
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				B44F6E9B1EEE263600BE43BF /* NumbersViewController.swift in Sources */,
 				B44F6E6F1EEE259D00BE43BF /* ViewController.swift in Sources */,
 				B44F6E6D1EEE259D00BE43BF /* AppDelegate.swift in Sources */,
+				B44F6E9D1EEE2D6500BE43BF /* InputViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
