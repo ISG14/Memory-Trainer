@@ -12,6 +12,7 @@ class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     //VARIABLES
     var pickerDataSource = ["Test"]
+    var userGuesses = [String]()
     
     //OUTLETS
     @IBOutlet weak var leftTextField: UITextField!
@@ -36,6 +37,7 @@ class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         return pickerDataSource[row]
     }
     
+    //Decides which text field to switch to next
     func textFieldDidChange(textField: UITextField){
         
         let text = textField.text
@@ -48,10 +50,17 @@ class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 rightTextField.becomeFirstResponder()
             case rightTextField:
                 rightTextField.resignFirstResponder()
+                inputNumAndClear()
             default:
                 break
             }
         }
+    }
+    
+    //Gathers numbers from all 3 text fields, inputs them into the picker view, and wipes the text fields clean
+    func inputNumAndClear(){
+        pickerDataSource.append("TEST2")
+        self.inputPickerView.reloadAllComponents()
     }
     
 
