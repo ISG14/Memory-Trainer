@@ -95,6 +95,10 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FqD-ci-bKf">
                                 <rect key="frame" x="0.0" y="56" width="375" height="216"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tk9-4c-ZJC" id="AvW-Ak-bnR"/>
+                                    <outlet property="delegate" destination="tk9-4c-ZJC" id="LFD-Ul-ya2"/>
+                                </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="284-tw-yUd">
                                 <rect key="frame" x="0.0" y="8" width="375" height="40"/>
@@ -126,6 +130,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="inputPickerView" destination="FqD-ci-bKf" id="y15-TL-cKt"/>
                         <outlet property="leftTextField" destination="iKx-8s-tDl" id="vI4-Ug-iqc"/>
                         <outlet property="middleTextField" destination="8JL-jt-Duu" id="tPx-q0-Mpg"/>
                         <outlet property="rightTextField" destination="S67-Mi-gOA" id="NAU-iR-aw9"/>
