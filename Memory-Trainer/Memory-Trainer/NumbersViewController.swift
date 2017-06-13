@@ -98,7 +98,7 @@ class NumbersViewController: UIViewController {
             view.removeFromSuperview()
         }
         
-        //VARIABLES
+        //Variables
         var button: UIButton!
         let containerSize = self.numContainerView.bounds
         let width = containerSize.width

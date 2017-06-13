@@ -8,93 +8,61 @@
 
 import UIKit
 
-class InputViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class InputViewController: UIViewController, UITextFieldDelegate {
     
     //VARIABLES
-    var pickerDataSource = ["Test"]
     var userGuesses = [String]()
+    var separator = 0
     
     //OUTLETS
-    @IBOutlet weak var leftTextField: UITextField!
-    @IBOutlet weak var middleTextField: UITextField!
-    @IBOutlet weak var rightTextField: UITextField!
-    @IBOutlet weak var inputPickerView: UIPickerView!
-    
+    @IBOutlet weak var inputScrollView: UIScrollView!
+    @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var guessLabel: UILabel!
     
     //ACTIONS
     
     
     //FUNCTIONS
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerDataSource.count;
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerDataSource[row]
-    }
-    
-    //Decides which text field to switch to next
-    func textFieldDidChange(textField: UITextField){
+    func moveToScrollView (textField: UITextField){
         
         let text = textField.text
         
-        if(text?.utf16.count == 2){
-            switch textField {
-            case leftTextField:
-                middleTextField.becomeFirstResponder()
-            case middleTextField:
-                rightTextField.becomeFirstResponder()
-            case rightTextField:
-                rightTextField.resignFirstResponder()
-                inputNumAndClear()
-            default:
-                break
-            }
+        if(text?.utf16.count == 2) {
+            userGuesses.append(textField.text!)
+            inputTextField.text = ""
+            addToScrollView()
         }
     }
     
-    //Gathers numbers from all 3 text fields, inputs them into the picker view, and wipes the text fields clean
-    func inputNumAndClear(){
-        pickerDataSource.append("TEST2")
-        self.inputPickerView.reloadAllComponents()
-    }
+    func addToScrollView(){
+        guessLabel.text = (guessLabel.text ?? "") + userGuesses.last! + " "
+        separator += 1
+        if (separator == 3){
+            guessLabel.text = (guessLabel.text ?? "") + "\n"
+            separator = 0
+        }
+        
+        guessLabel.sizeToFit()
+        guessLabel.frame = CGRect(x: 0, y: 8, width: inputScrollView.bounds.width, height: guessLabel.bounds.height)
     
+        inputScrollView.contentSize.height = guessLabel.bounds.height + 10
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //Set num pad default for all text fields
-        leftTextField.keyboardType = UIKeyboardType.numberPad
-        middleTextField.keyboardType = UIKeyboardType.numberPad
-        rightTextField.keyboardType = UIKeyboardType.numberPad
         
-        //Move text fields out of view to animate in
-        leftTextField.center.x -= 150
-        rightTextField.center.x += 150
-        middleTextField.center.y += 400
+        //Assign numpad to textfield
+        inputTextField.keyboardType = UIKeyboardType.numberPad
         
-        //Animate texts fields back in
-        UIView.animate(withDuration: 1.5){
-            self.leftTextField.center.x += 150
-            self.rightTextField.center.x -= 150
-            self.middleTextField.center.y -= 400
-        }
+        //Set up text field to only take 2 digits
+        inputTextField.delegate = self
+        inputTextField.addTarget(self, action: #selector(self.moveToScrollView), for: UIControlEvents.editingChanged)
         
-        //Initialize picker view
-        self.inputPickerView.dataSource = self;
-        self.inputPickerView.delegate = self;
+        //Bring up keyboard to start
+        inputTextField.becomeFirstResponder()
         
-        //Initialize text fields for auto switch
-        leftTextField.delegate = self
-        leftTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
-        middleTextField.delegate = self
-        middleTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
-        rightTextField.delegate = self
-        rightTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+        inputScrollView.contentSize.height = 1000
+        
     }
 
     override func didReceiveMemoryWarning() {
