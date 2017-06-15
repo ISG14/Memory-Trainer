@@ -17,6 +17,7 @@
 		B44F6E9B1EEE263600BE43BF /* NumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */; };
 		B44F6E9D1EEE2D6500BE43BF /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */; };
 		B481AA301EF2C18E0021F8EF /* UtilsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */; };
+		B481AA321EF2E5100021F8EF /* NumbersCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersViewController.swift; sourceTree = "<group>"; };
 		B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsViewController.swift; sourceTree = "<group>"; };
+		B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersCheckViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */,
 				B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */,
 				B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */,
+				B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */,
 			);
 			path = "Memory-Trainer";
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			files = (
 				B44F6E9B1EEE263600BE43BF /* NumbersViewController.swift in Sources */,
 				B44F6E6F1EEE259D00BE43BF /* ViewController.swift in Sources */,
+				B481AA321EF2E5100021F8EF /* NumbersCheckViewController.swift in Sources */,
 				B44F6E6D1EEE259D00BE43BF /* AppDelegate.swift in Sources */,
 				B44F6E9D1EEE2D6500BE43BF /* InputViewController.swift in Sources */,
 				B481AA301EF2C18E0021F8EF /* UtilsViewController.swift in Sources */,

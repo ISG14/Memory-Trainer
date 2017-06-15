@@ -15,6 +15,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     var yHeight = CGFloat(integerLiteral: 25)
     var moveToNext = 0
     var rowCounter = 1
+    var digitArray: [String]!
     
     //OUTLETS
     @IBOutlet weak var inputScrollView: UIScrollView!
@@ -24,6 +25,12 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     
     
     //FUNCTIONS
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? NumbersCheckViewController
+        destination?.userGuesses = userGuesses
+        destination?.digitArray = digitArray
+    }
+    
     func moveToScrollView (textField: UITextField){
         
         let text = textField.text
@@ -73,7 +80,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         inputScrollView.contentSize.height = yHeight + 25
         
         //Auto-scroll
-        self.inputScrollView.setContentOffset(CGPoint(x: 0, y: self.inputScrollView.contentSize.height - self.inputScrollView.bounds.height), animated: false)
+        self.inputScrollView.setContentOffset(CGPoint(x: 0, y: self.inputScrollView.contentSize.height - self.inputScrollView.bounds.height), animated: true)
         
     }
 

@@ -53,6 +53,12 @@ class NumbersViewController: UIViewController {
     }
     
     //FUNCTIONS
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? InputViewController
+        destination?.digitArray = digitArray
+    }
+    
+    
     func countdown(){
         if(seconds == 0){
             timer.invalidate()
