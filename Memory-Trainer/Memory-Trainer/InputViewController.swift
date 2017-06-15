@@ -12,12 +12,13 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     
     //VARIABLES
     var userGuesses = [String]()
-    var separator = 0
+    var yHeight = CGFloat(integerLiteral: 25)
+    var moveToNext = 0
+    var rowCounter = 1
     
     //OUTLETS
     @IBOutlet weak var inputScrollView: UIScrollView!
     @IBOutlet weak var inputTextField: UITextField!
-    @IBOutlet weak var guessLabel: UILabel!
     
     //ACTIONS
     
@@ -35,17 +36,45 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addToScrollView(){
-        guessLabel.text = (guessLabel.text ?? "") + userGuesses.last! + " "
-        separator += 1
-        if (separator == 3){
-            guessLabel.text = (guessLabel.text ?? "") + "\n"
-            separator = 0
+        
+        //Variables
+        var row: UIButton!
+        
+        //Reset moveToNext after 3 sets of digits so a new button is formed
+        if(moveToNext == 3){
+            moveToNext = 0
+            rowCounter += 1
         }
         
-        guessLabel.sizeToFit()
-        guessLabel.frame = CGRect(x: 0, y: 8, width: inputScrollView.bounds.width, height: guessLabel.bounds.height)
-    
-        inputScrollView.contentSize.height = guessLabel.bounds.height + 10
+        //If moveToNext is 0 create a new button
+        if(moveToNext == 0){
+            
+            //Increase y-height only when a new button is made
+            yHeight += CGFloat(integerLiteral: 50)
+            
+            //Make a new button for the incoming guess
+            row = UIButton(frame: CGRect(origin: self.view.center, size: CGSize(width: 150, height: 50)))
+            row.center.x = inputScrollView.bounds.width / 2
+            row.center.y = yHeight
+            row.tag = rowCounter
+            row.setTitle(userGuesses.last!, for: .normal)
+            row.setTitleColor(.black, for: .normal)
+            self.inputScrollView.addSubview(row)
+        } else {
+            if let button = self.view.viewWithTag(rowCounter) as? UIButton{
+                button.setTitle((button.titleLabel?.text)! + "  \(userGuesses.last!)", for: .normal)
+            }
+            
+        }
+        
+        moveToNext += 1
+        
+        //Programatically increase the content size so that it only scrolls when there is enough info
+        inputScrollView.contentSize.height = yHeight + 25
+        
+        //Auto-scroll
+        self.inputScrollView.setContentOffset(CGPoint(x: 0, y: self.inputScrollView.contentSize.height - self.inputScrollView.bounds.height), animated: false)
+        
     }
 
     override func viewDidLoad() {
@@ -61,7 +90,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         //Bring up keyboard to start
         inputTextField.becomeFirstResponder()
         
-        inputScrollView.contentSize.height = 1000
+        inputScrollView.contentSize.height = 50
         
     }
 
