@@ -18,6 +18,8 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     var digitArray: [String]!
     var nextRowIsTrue = true
     var tagToAppend = 1
+    var indexToUpdate = 0
+    var updateSpaces = 0
     
     //OUTLETS
     @IBOutlet weak var inputScrollView: UIScrollView!
@@ -27,6 +29,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     func rowButtonPressed(sender: UIButton){
         sender.setTitle("", for: .normal)
         tagToAppend = sender.tag
+        indexToUpdate = tagToAppend*6
         nextRowIsTrue = false
     }
 
@@ -47,17 +50,35 @@ class InputViewController: UIViewController, UITextFieldDelegate {
                 inputTextField.text = ""
                 addToScrollView()
             }else{
+                userGuesses[indexToUpdate] = textField.text!
                 inputTextField.text = ""
-                appendRowButton()
+                updateRowButton()
+                indexToUpdate += 1
             }
             
         }
     }
     
-    func appendRowButton(){
-        if let button = self.view.viewWithTag(tagToAppend) as? UIButton{
-            button.setTitle((button.titleLabel?.text)! + "  \(userGuesses.last!)", for: .normal)
+    func updateRowButton(){
+        
+        
+        if(updateSpaces == 5){
+            updateSpaces = -1
+            nextRowIsTrue = true
         }
+        
+        if let button = self.view.viewWithTag(tagToAppend) as? UIButton{
+            if((button.titleLabel?.text?.characters.count)! > 9){
+                button.setTitle("\(userGuesses[indexToUpdate])", for: .normal)
+            }else{
+                if(updateSpaces%2 == 0){
+                    button.setTitle((button.titleLabel?.text)! + "  ", for: .normal)
+                }
+                button.setTitle((button.titleLabel?.text)! + "\(userGuesses[indexToUpdate])", for: .normal)
+            }
+        }
+        
+        updateSpaces += 1
     }
     
     func addToScrollView(){
