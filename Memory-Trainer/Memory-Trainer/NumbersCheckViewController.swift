@@ -41,7 +41,7 @@ class NumbersCheckViewController: UIViewController {
         correctLabel.textColor = .green
         correctLabel.text = "CORRECT:\n\(numCorrect)"
         incorrectLabel.textColor = .red
-        incorrectLabel.text = "INCORRECT\n\(numIncorrect)"
+        incorrectLabel.text = "INCORRECT:\n\(numIncorrect)"
         
         //Variables
         var yHeight = 100
@@ -73,10 +73,15 @@ class NumbersCheckViewController: UIViewController {
                 guessLabel.textColor = .green
             }
             
-            yHeight += 50
+            if(index%2 == 0){
+                yHeight += 25
+            }else{
+                yHeight += 50
+            }
+            
         }
  
-        numbersCheckScrollView.contentSize.height = CGFloat(yHeight - 25)
+        numbersCheckScrollView.contentSize.height = CGFloat(yHeight)
 
     }
 
