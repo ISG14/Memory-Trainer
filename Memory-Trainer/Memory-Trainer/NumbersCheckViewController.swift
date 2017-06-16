@@ -13,17 +13,38 @@ class NumbersCheckViewController: UIViewController {
     //VARIABLES
     var userGuesses: [String]!
     var digitArray: [String]!
+    var numCorrect = 0
+    var numIncorrect = 0
     
     //OUTLETS
     @IBOutlet weak var numbersCheckScrollView: UIScrollView!
+    @IBOutlet weak var correctLabel: UILabel!
+    @IBOutlet weak var incorrectLabel: UILabel!
     
+    //FUNCTIONS
+    func findNumCorrect(){
+        for index in 0..<userGuesses.count{
+            if (userGuesses[index] == digitArray[index]){
+                numCorrect += 1
+            }else{
+                numIncorrect += 1
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var yHeight = 50
+        findNumCorrect()
         
-        print(userGuesses.count)
+        //Num correct and incorrect labels
+        correctLabel.textColor = .green
+        correctLabel.text = "CORRECT:\n\(numCorrect)"
+        incorrectLabel.textColor = .red
+        incorrectLabel.text = "INCORRECT\n\(numIncorrect)"
+        
+        //Variables
+        var yHeight = 100
         
         for index in 0..<userGuesses.count{
             
@@ -43,15 +64,19 @@ class NumbersCheckViewController: UIViewController {
             guessLabel.center.y = CGFloat(yHeight)
             guessLabel.textAlignment = .center
             guessLabel.text = userGuesses[index]
+            self.numbersCheckScrollView.addSubview(guessLabel)
+            
+            //Set color of guesses to show if right or wrong
             if(userGuesses[index] != digitArray[index]){
                 guessLabel.textColor = .red
+            }else{
+                guessLabel.textColor = .green
             }
-            self.numbersCheckScrollView.addSubview(guessLabel)
             
             yHeight += 50
         }
  
-        numbersCheckScrollView.contentSize.height = CGFloat(yHeight - 50)
+        numbersCheckScrollView.contentSize.height = CGFloat(yHeight - 25)
 
     }
 

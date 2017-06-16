@@ -16,14 +16,20 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     var moveToNext = 0
     var rowCounter = 1
     var digitArray: [String]!
+    var nextRowIsTrue = true
+    var tagToAppend = 1
     
     //OUTLETS
     @IBOutlet weak var inputScrollView: UIScrollView!
     @IBOutlet weak var inputTextField: UITextField!
     
     //ACTIONS
-    
-    
+    func rowButtonPressed(sender: UIButton){
+        sender.setTitle("", for: .normal)
+        tagToAppend = sender.tag
+        nextRowIsTrue = false
+    }
+
     //FUNCTIONS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? NumbersCheckViewController
@@ -35,10 +41,22 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         
         let text = textField.text
         
-        if(text?.utf16.count == 2) {
-            userGuesses.append(textField.text!)
-            inputTextField.text = ""
-            addToScrollView()
+        if(text?.utf16.count == 1) {
+            if(nextRowIsTrue){
+                userGuesses.append(textField.text!)
+                inputTextField.text = ""
+                addToScrollView()
+            }else{
+                inputTextField.text = ""
+                appendRowButton()
+            }
+            
+        }
+    }
+    
+    func appendRowButton(){
+        if let button = self.view.viewWithTag(tagToAppend) as? UIButton{
+            button.setTitle((button.titleLabel?.text)! + "  \(userGuesses.last!)", for: .normal)
         }
     }
     
@@ -48,7 +66,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         var row: UIButton!
         
         //Reset moveToNext after 3 sets of digits so a new button is formed
-        if(moveToNext == 3){
+        if(moveToNext == 6){
             moveToNext = 0
             rowCounter += 1
         }
@@ -64,23 +82,27 @@ class InputViewController: UIViewController, UITextFieldDelegate {
             row.center.x = inputScrollView.bounds.width / 2
             row.center.y = yHeight
             row.tag = rowCounter
+            row.addTarget(self, action: #selector(rowButtonPressed), for: .touchUpInside)
             row.setTitle(userGuesses.last!, for: .normal)
             row.setTitleColor(.black, for: .normal)
             self.inputScrollView.addSubview(row)
         } else {
             if let button = self.view.viewWithTag(rowCounter) as? UIButton{
-                button.setTitle((button.titleLabel?.text)! + "  \(userGuesses.last!)", for: .normal)
+                if(moveToNext%2 == 0){
+                    button.setTitle((button.titleLabel?.text)! + "  ", for: .normal)
+                }
+                button.setTitle((button.titleLabel?.text)! + "\(userGuesses.last!)", for: .normal)
             }
             
         }
-        
+
         moveToNext += 1
         
         //Programatically increase the content size so that it only scrolls when there is enough info
         inputScrollView.contentSize.height = yHeight + 25
         
         //Auto-scroll
-        self.inputScrollView.setContentOffset(CGPoint(x: 0, y: self.inputScrollView.contentSize.height - self.inputScrollView.bounds.height), animated: true)
+        self.inputScrollView.setContentOffset(CGPoint(x: 0, y: self.inputScrollView.contentSize.height - self.inputScrollView.bounds.height), animated: false)
         
     }
 

@@ -119,7 +119,7 @@ class NumbersViewController: UIViewController {
             var xPos = widthSpacing*2
             for _ in 0...2 {
                 button = UIButton(frame: CGRect(x: xPos, y: yPos, width: 50, height: 50))
-                button.setTitle(digitArray[digitIndex], for: .normal)
+                button.setTitle(digitArray[digitIndex] + digitArray[digitIndex+1], for: .normal)
                 button.setTitleColor(.black, for: .normal)
                 button.addTarget(self, action: #selector(numberIsPressed), for: .touchUpInside)
                 self.numContainerView.addSubview(button)
@@ -161,9 +161,7 @@ class NumbersViewController: UIViewController {
         digitArray = [String]()
         for _ in 0...999{
             var digit = ""
-            for _ in 0...1{
-                digit += String(arc4random_uniform(UInt32(10)))
-            }
+            digit += String(arc4random_uniform(UInt32(10)))
             digitArray.append(digit)
         }
     }

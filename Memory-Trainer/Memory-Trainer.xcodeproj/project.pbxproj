@@ -113,8 +113,8 @@
 				B44F6E781EEE259D00BE43BF /* Info.plist */,
 				B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */,
 				B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */,
-				B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */,
 				B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */,
+				B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */,
 			);
 			path = "Memory-Trainer";
 			sourceTree = "<group>";
