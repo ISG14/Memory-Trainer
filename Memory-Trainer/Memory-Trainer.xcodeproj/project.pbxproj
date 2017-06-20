@@ -18,6 +18,7 @@
 		B44F6E9D1EEE2D6500BE43BF /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */; };
 		B481AA301EF2C18E0021F8EF /* UtilsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */; };
 		B481AA321EF2E5100021F8EF /* NumbersCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */; };
+		B481AA351EF83AF40021F8EF /* NumInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA341EF83AF40021F8EF /* NumInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsViewController.swift; sourceTree = "<group>"; };
 		B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersCheckViewController.swift; sourceTree = "<group>"; };
+		B481AA341EF83AF40021F8EF /* NumInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,15 +107,15 @@
 		B44F6E6B1EEE259D00BE43BF /* Memory-Trainer */ = {
 			isa = PBXGroup;
 			children = (
+				B481AA381EF869220021F8EF /* Build */,
+				B481AA371EF869130021F8EF /* Train */,
+				B481AA361EF8690D0021F8EF /* Test */,
 				B44F6E6C1EEE259D00BE43BF /* AppDelegate.swift */,
 				B44F6E6E1EEE259D00BE43BF /* ViewController.swift */,
 				B44F6E701EEE259D00BE43BF /* Main.storyboard */,
 				B44F6E731EEE259D00BE43BF /* Assets.xcassets */,
 				B44F6E751EEE259D00BE43BF /* LaunchScreen.storyboard */,
 				B44F6E781EEE259D00BE43BF /* Info.plist */,
-				B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */,
-				B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */,
-				B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */,
 				B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */,
 			);
 			path = "Memory-Trainer";
@@ -135,6 +137,39 @@
 				B44F6E8E1EEE259E00BE43BF /* Info.plist */,
 			);
 			path = "Memory-TrainerUITests";
+			sourceTree = "<group>";
+		};
+		B481AA331EF820B90021F8EF /* Numbers_Test */ = {
+			isa = PBXGroup;
+			children = (
+				B481AA341EF83AF40021F8EF /* NumInputView.swift */,
+				B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */,
+				B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */,
+				B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */,
+			);
+			name = Numbers_Test;
+			sourceTree = "<group>";
+		};
+		B481AA361EF8690D0021F8EF /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				B481AA331EF820B90021F8EF /* Numbers_Test */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
+		B481AA371EF869130021F8EF /* Train */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Train;
+			sourceTree = "<group>";
+		};
+		B481AA381EF869220021F8EF /* Build */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Build;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +310,7 @@
 				B44F6E6F1EEE259D00BE43BF /* ViewController.swift in Sources */,
 				B481AA321EF2E5100021F8EF /* NumbersCheckViewController.swift in Sources */,
 				B44F6E6D1EEE259D00BE43BF /* AppDelegate.swift in Sources */,
+				B481AA351EF83AF40021F8EF /* NumInputView.swift in Sources */,
 				B44F6E9D1EEE2D6500BE43BF /* InputViewController.swift in Sources */,
 				B481AA301EF2C18E0021F8EF /* UtilsViewController.swift in Sources */,
 			);

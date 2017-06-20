@@ -12,136 +12,81 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     
     //VARIABLES
     var userGuesses = [String]()
-    var yHeight = CGFloat(integerLiteral: 25)
-    var moveToNext = 0
-    var rowCounter = 1
     var digitArray: [String]!
-    var nextRowIsTrue = true
-    var tagToAppend = 1
-    var indexToUpdate = 0
-    var updateSpaces = 0
+    var xPos = 0
+    var yPos = 50
+    var rowCounter = 0
     
     //OUTLETS
-    @IBOutlet weak var inputScrollView: UIScrollView!
-    @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //ACTIONS
-    func rowButtonPressed(sender: UIButton){
-        sender.setTitle("", for: .normal)
-        tagToAppend = sender.tag
-        indexToUpdate = tagToAppend*6
-        nextRowIsTrue = false
-    }
+    
+    
 
     //FUNCTIONS
+    func firstTextField(){
+        xPos = Int((scrollView.bounds.width - 200)/2)
+            
+        //Create the first text field so that initNumTest can be called whenever
+        let numTextField = NumInputView(frame: CGRect(x: xPos, y: 50, width: 50, height: 50))
+        scrollView.addSubview(numTextField)
+        
+        //Set the text field to the first responder and background color to yellow
+        numTextField.becomeFirstResponder()
+        numTextField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0.5)
+        
+        //Add target to change when one number inputed
+        numTextField.addTarget(self, action: #selector(self.moveTextFields), for: UIControlEvents.editingChanged)
+        
+    }
+    
+    func initNumTestInput(){
+        
+        xPos += 50
+        
+        if(rowCounter == 3){
+            xPos = Int((scrollView.bounds.width - 200)/2)
+            yPos += 75
+            rowCounter = 0
+        }
+        
+        
+        //Create a new text field for next number
+        let newTextField = NumInputView(frame: CGRect(x: xPos, y: yPos, width: 50, height: 50))
+        newTextField.becomeFirstResponder()
+        newTextField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0.5)
+        scrollView.addSubview(newTextField)
+        newTextField.addTarget(self, action: #selector(self.moveTextFields), for: UIControlEvents.editingChanged)
+        
+        rowCounter += 1
+        
+    }
+    
+    func moveTextFields(textField: UITextField){
+        let text = textField.text
+        
+        if(text?.utf16.count == 1) {
+            userGuesses.append(textField.text!)
+            textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
+            initNumTestInput()
+            
+        }
+
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? NumbersCheckViewController
         destination?.userGuesses = userGuesses
         destination?.digitArray = digitArray
     }
-    
-    func moveToScrollView (textField: UITextField){
-        
-        let text = textField.text
-        
-        if(text?.utf16.count == 1) {
-            if(nextRowIsTrue){
-                userGuesses.append(textField.text!)
-                inputTextField.text = ""
-                addToScrollView()
-            }else{
-                userGuesses[indexToUpdate] = textField.text!
-                inputTextField.text = ""
-                updateRowButton()
-                indexToUpdate += 1
-            }
-            
-        }
-    }
-    
-    func updateRowButton(){
-        
-        
-        if(updateSpaces == 5){
-            updateSpaces = -1
-            nextRowIsTrue = true
-        }
-        
-        if let button = self.view.viewWithTag(tagToAppend) as? UIButton{
-            if((button.titleLabel?.text?.characters.count)! > 9){
-                button.setTitle("\(userGuesses[indexToUpdate])", for: .normal)
-            }else{
-                if(updateSpaces%2 == 0){
-                    button.setTitle((button.titleLabel?.text)! + "  ", for: .normal)
-                }
-                button.setTitle((button.titleLabel?.text)! + "\(userGuesses[indexToUpdate])", for: .normal)
-            }
-        }
-        
-        updateSpaces += 1
-    }
-    
-    func addToScrollView(){
-        
-        //Variables
-        var row: UIButton!
-        
-        //Reset moveToNext after 3 sets of digits so a new button is formed
-        if(moveToNext == 6){
-            moveToNext = 0
-            rowCounter += 1
-        }
-        
-        //If moveToNext is 0 create a new button
-        if(moveToNext == 0){
-            
-            //Increase y-height only when a new button is made
-            yHeight += CGFloat(integerLiteral: 50)
-            
-            //Make a new button for the incoming guess
-            row = UIButton(frame: CGRect(origin: self.view.center, size: CGSize(width: 150, height: 50)))
-            row.center.x = inputScrollView.bounds.width / 2
-            row.center.y = yHeight
-            row.tag = rowCounter
-            row.addTarget(self, action: #selector(rowButtonPressed), for: .touchUpInside)
-            row.setTitle(userGuesses.last!, for: .normal)
-            row.setTitleColor(.black, for: .normal)
-            self.inputScrollView.addSubview(row)
-        } else {
-            if let button = self.view.viewWithTag(rowCounter) as? UIButton{
-                if(moveToNext%2 == 0){
-                    button.setTitle((button.titleLabel?.text)! + "  ", for: .normal)
-                }
-                button.setTitle((button.titleLabel?.text)! + "\(userGuesses.last!)", for: .normal)
-            }
-            
-        }
-
-        moveToNext += 1
-        
-        //Programatically increase the content size so that it only scrolls when there is enough info
-        inputScrollView.contentSize.height = yHeight + 25
-        
-        //Auto-scroll
-        self.inputScrollView.setContentOffset(CGPoint(x: 0, y: self.inputScrollView.contentSize.height - self.inputScrollView.bounds.height), animated: false)
-        
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Assign numpad to textfield
-        inputTextField.keyboardType = UIKeyboardType.numberPad
-        
-        //Set up text field to only take 2 digits
-        inputTextField.delegate = self
-        inputTextField.addTarget(self, action: #selector(self.moveToScrollView), for: UIControlEvents.editingChanged)
-        
-        //Bring up keyboard to start
-        inputTextField.becomeFirstResponder()
-        
-        inputScrollView.contentSize.height = 50
-        
+        //Create first text field
+        firstTextField()
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -159,5 +104,6 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+
 
 }
