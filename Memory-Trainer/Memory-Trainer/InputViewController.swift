@@ -14,7 +14,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     var userGuesses = [String]()
     var digitArray: [String]!
     var xPos = 0
-    var yPos = 50
+    var yPos = 25
     var rowCounter = 0
     
     //OUTLETS
@@ -29,7 +29,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         xPos = Int((scrollView.bounds.width - 200)/2)
             
         //Create the first text field so that initNumTest can be called whenever
-        let numTextField = NumInputView(frame: CGRect(x: xPos, y: 50, width: 50, height: 50))
+        let numTextField = NumInputView(frame: CGRect(x: xPos, y: yPos, width: 50, height: 50))
         scrollView.addSubview(numTextField)
         
         //Set the text field to the first responder and background color to yellow
@@ -47,8 +47,8 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         
         if(rowCounter == 3){
             xPos = Int((scrollView.bounds.width - 200)/2)
-            yPos += 75
-            rowCounter = 0
+            yPos += 50
+            rowCounter = -1
         }
         
         
@@ -60,6 +60,16 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         newTextField.addTarget(self, action: #selector(self.moveTextFields), for: UIControlEvents.editingChanged)
         
         rowCounter += 1
+        
+        if(yPos > 175){
+            //Programatically increase the content size so that it only scrolls when there is enough info
+            scrollView.contentSize.height = CGFloat(yPos + 75)
+            
+            //Auto-scroll
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
+
+        }
+       
         
     }
     

@@ -11,7 +11,7 @@ import UIKit
 class NumbersViewController: UIViewController {
     
     //VARIABLES
-    var seconds = 3
+    var seconds = 0
     var timer: Timer!
     var digitArray: [String]!
     var row = 23
