@@ -9,9 +9,12 @@
 import UIKit
 
 class NumInputView: UITextField {
+    
+    var index: Int!
 
-    override init(frame: CGRect){
+    init(frame: CGRect, index: Int){
         super.init(frame: frame)
+        self.index = index
         self.backgroundColor = .blue
         self.textAlignment = .center
         self.textColor = .white
