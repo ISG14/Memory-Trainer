@@ -124,7 +124,7 @@ class NumbersViewController: UIViewController {
                 button.addTarget(self, action: #selector(numberIsPressed), for: .touchUpInside)
                 self.numContainerView.addSubview(button)
                 xPos += widthSpacing + 50.0
-                digitIndex += 1
+                digitIndex += 2
             }
             yPos += heightSpacing + 50.0
         }
@@ -164,6 +164,7 @@ class NumbersViewController: UIViewController {
             digit += String(arc4random_uniform(UInt32(10)))
             digitArray.append(digit)
         }
+        
     }
 
     override func didReceiveMemoryWarning() {

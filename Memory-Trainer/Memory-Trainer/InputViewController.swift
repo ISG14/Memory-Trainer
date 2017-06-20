@@ -24,7 +24,6 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     
     //ACTIONS
     @IBAction func skipButton(_ sender: Any) {
-        print(currentTextField.index)
         currentTextField.text = " "
         moveTextFields(textField: currentTextField)
     }
@@ -89,7 +88,6 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     }
     
     func changeTextField(textField: NumInputView){
-        print("GOT HERE")
         currentTextField = textField
         textField.text = ""
         textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0.5)
