@@ -25,7 +25,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     //ACTIONS
     @IBAction func skipButton(_ sender: Any) {
         print(currentTextField.index)
-        currentTextField.text = "1"
+        currentTextField.text = " "
         moveTextFields(textField: currentTextField)
     }
 
@@ -58,7 +58,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         }
         
         //Create a new text field for next number
-        let newTextField = NumInputView(frame: CGRect(x: xPos, y: yPos, width: 50, height: 50), index: userGuesses.count + 1)
+        let newTextField = NumInputView(frame: CGRect(x: xPos, y: yPos, width: 50, height: 50), index: userGuesses.count)
         newTextField.becomeFirstResponder()
         newTextField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0.5)
         scrollView.addSubview(newTextField)
