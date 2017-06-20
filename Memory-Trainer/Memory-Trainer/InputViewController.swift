@@ -17,13 +17,17 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     var yPos = 25
     var rowCounter = 0
     var lastTextField: NumInputView!
+    var currentTextField: NumInputView!
     
     //OUTLETS
     @IBOutlet weak var scrollView: UIScrollView!
     
     //ACTIONS
-    
-    
+    @IBAction func skipButton(_ sender: Any) {
+        print(currentTextField.index)
+        currentTextField.text = "1"
+        moveTextFields(textField: currentTextField)
+    }
 
     //FUNCTIONS
     func firstTextField(){
@@ -40,7 +44,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         //Add target to change when one number inputed
         numTextField.addTarget(self, action: #selector(self.moveTextFields), for: UIControlEvents.editingChanged)
         numTextField.addTarget(self, action: #selector(self.changeTextField), for: .editingDidBegin)
-        
+        numTextField.addTarget(self, action: #selector(self.endEditTextField), for: .editingDidEnd)
     }
     
     func initNumTestInput(){
@@ -64,11 +68,9 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         
         //Set last text field to one being made so that it can revert easily after revising others
         lastTextField = newTextField
+        currentTextField = newTextField
         
         rowCounter += 1
-        
-        print(yPos)
-        print(scrollView.bounds.height)
         
         if(yPos > Int(scrollView.bounds.height-50)){
             //Programatically increase the content size so that it only scrolls when there is enough info
@@ -87,6 +89,8 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     }
     
     func changeTextField(textField: NumInputView){
+        print("GOT HERE")
+        currentTextField = textField
         textField.text = ""
         textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0.5)
     }
