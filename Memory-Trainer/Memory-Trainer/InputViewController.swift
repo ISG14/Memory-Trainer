@@ -67,7 +67,10 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         
         rowCounter += 1
         
-        if(yPos > 175){
+        print(yPos)
+        print(scrollView.bounds.height)
+        
+        if(yPos > Int(scrollView.bounds.height-50)){
             //Programatically increase the content size so that it only scrolls when there is enough info
             scrollView.contentSize.height = CGFloat(yPos + 75)
             
@@ -96,7 +99,9 @@ class InputViewController: UIViewController, UITextFieldDelegate {
                 textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
                 userGuesses[textField.index] = textField.text!
                 lastTextField.becomeFirstResponder()
-                self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
+                if(yPos > Int(scrollView.bounds.height-50)){
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
+                }
             }else{
                 userGuesses.append(textField.text!)
                 textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
