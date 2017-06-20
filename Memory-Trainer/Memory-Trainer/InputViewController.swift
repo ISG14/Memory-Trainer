@@ -16,6 +16,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     var xPos = 0
     var yPos = 25
     var rowCounter = 0
+    var lastTextField: NumInputView!
     
     //OUTLETS
     @IBOutlet weak var scrollView: UIScrollView!
@@ -38,6 +39,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         
         //Add target to change when one number inputed
         numTextField.addTarget(self, action: #selector(self.moveTextFields), for: UIControlEvents.editingChanged)
+        numTextField.addTarget(self, action: #selector(self.changeTextField), for: .editingDidBegin)
         
     }
     
@@ -58,6 +60,10 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         scrollView.addSubview(newTextField)
         newTextField.addTarget(self, action: #selector(self.moveTextFields), for: UIControlEvents.editingChanged)
         newTextField.addTarget(self, action: #selector(self.changeTextField), for: .editingDidBegin)
+        newTextField.addTarget(self, action: #selector(self.endEditTextField), for: .editingDidEnd)
+        
+        //Set last text field to one being made so that it can revert easily after revising others
+        lastTextField = newTextField
         
         rowCounter += 1
         
@@ -73,12 +79,13 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func endEditTextField(textField: NumInputView){
+        textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
+    }
+    
     func changeTextField(textField: NumInputView){
-        print("got here")
-        
         textField.text = ""
         textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0.5)
-        
     }
     
     func moveTextFields(textField: NumInputView){
@@ -88,6 +95,8 @@ class InputViewController: UIViewController, UITextFieldDelegate {
             if(textField.index < userGuesses.count){
                 textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
                 userGuesses[textField.index] = textField.text!
+                lastTextField.becomeFirstResponder()
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
             }else{
                 userGuesses.append(textField.text!)
                 textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
