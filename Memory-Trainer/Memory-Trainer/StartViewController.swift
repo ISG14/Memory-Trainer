@@ -11,10 +11,11 @@ import UIKit
 class StartViewController: UIViewController {
 
     //VARIABLES
-    var seconds = 5
+    var seconds = 0
     var timer: Timer!
     var readyButton: UIButton!
     var timerLabel: UILabel!
+    var stopwatchLabel: UILabel!
     
     //OUTLETS
     
@@ -23,11 +24,53 @@ class StartViewController: UIViewController {
     
     
     //FUNCTIONS
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        //Initialize ready Button
+        readyButton = UIButton(frame: CGRect(origin: self.view.center, size: CGSize(width: 150, height: 100)))
+        readyButton.setTitle("Ready", for: .normal)
+        readyButton.setTitleColor(.red, for: .normal)
+        readyButton.center = self.view.center
+        readyButton.center.y -= 40
+        readyButton.addTarget(self, action: #selector(readyButtonPressed), for: .touchUpInside)
+        self.view.addSubview(readyButton)
+        
+        //Initialize countdown label
+        timerLabel = UILabel(frame: CGRect(origin: self.view.center, size: CGSize(width: 200, height: 100)))
+        timerLabel.isHidden = true
+        timerLabel.textAlignment = NSTextAlignment.center
+        timerLabel.textColor = .red
+        timerLabel.center = readyButton.center
+        self.view.addSubview(timerLabel)
+        
+        //Initialize stopwatch label
+        stopwatchLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width*0.76, height: self.view.bounds.height*0.06301824212))
+        stopwatchLabel.center.x = self.view.center.x
+        stopwatchLabel.textAlignment = NSTextAlignment.center
+        stopwatchLabel.textColor = .white
+        stopwatchLabel.backgroundColor = UIColor(red:0.08, green:0.58, blue:0.81, alpha:1.0)
+        stopwatchLabel.text = "00:00:00"
+        stopwatchLabel.isHidden = true
+        self.view.addSubview(stopwatchLabel)
+        
+    }
+    
     func unhideAll(){
     }
-    func countUp(){
-    }
     func initLevel(){
+    }
+    
+    func countUp(){
+        stopwatchLabel.text = timeString(time: TimeInterval(seconds))
+        seconds += 1
+    }
+    
+    func timeString(time:TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
     
     func readyButtonPressed(sender: Any) {
@@ -50,42 +93,9 @@ class StartViewController: UIViewController {
             seconds -= 1
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        //Ready Button
-        readyButton = UIButton(frame: CGRect(origin: self.view.center, size: CGSize(width: 150, height: 100)))
-        readyButton.setTitle("Ready", for: .normal)
-        readyButton.setTitleColor(.red, for: .normal)
-        readyButton.center = self.view.center
-        readyButton.center.y -= 40
-        readyButton.addTarget(self, action: #selector(readyButtonPressed), for: .touchUpInside)
-        self.view.addSubview(readyButton)
-        
-        //Initialize timer label
-        timerLabel = UILabel(frame: CGRect(origin: self.view.center, size: CGSize(width: 200, height: 100)))
-        timerLabel.isHidden = true
-        timerLabel.textAlignment = NSTextAlignment.center
-        timerLabel.textColor = .red
-        timerLabel.center = readyButton.center
-        self.view.addSubview(timerLabel)
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

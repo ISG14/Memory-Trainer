@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcb-Ck-Nez">
-                                <rect key="frame" x="43" y="565" width="287" height="38"/>
+                                <rect key="frame" x="45" y="565" width="285" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.081238038839999999" green="0.58428609369999995" blue="0.81312543150000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Finished">
@@ -43,18 +43,10 @@
                                     <action selector="leftButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YNC-Us-NxD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBB-aZ-6G6">
-                                <rect key="frame" x="45" y="0.0" width="285" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.081238038839999999" green="0.58428609369999995" blue="0.81312543150000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-pJ-Huv">
                                 <rect key="frame" x="330" y="0.0" width="45" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.47487980130000002" green="0.37986028189999999" blue="0.78285759690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.47487980127334595" green="0.3798602819442749" blue="0.78285759687423706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="&gt;">
                                     <color key="titleColor" red="0.97713865229999997" green="1" blue="0.97150488970000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -66,7 +58,6 @@
                         <color key="backgroundColor" red="0.20939725637435913" green="0.70211619138717651" blue="0.9353213906288147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="countUpLabel" destination="nBB-aZ-6G6" id="O6d-kc-CJS"/>
                         <outlet property="finishedButton" destination="Zcb-Ck-Nez" id="cCi-Ii-u6M"/>
                         <outlet property="leftButton" destination="RIi-Wa-nI3" id="JEn-gm-5Gv"/>
                         <outlet property="rightButton" destination="JOu-pJ-Huv" id="MvQ-Ca-Qsa"/>
@@ -88,18 +79,6 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIa-mR-4OM">
-                                <rect key="frame" x="43" y="565" width="287" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.081238038837909698" green="0.58428609371185303" blue="0.81312543153762817" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Finished">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="finishedButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="24t-Lb-Pop"/>
-                                    <segue destination="Ub9-tu-gVv" kind="show" id="7GY-eE-a3F"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXY-S4-ETQ">
                                 <rect key="frame" x="0.0" y="0.0" width="45" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -135,6 +114,18 @@
                                     <action selector="rightButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6wM-t9-Wyk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIa-mR-4OM">
+                                <rect key="frame" x="45" y="565" width="285" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.081238038837909698" green="0.58428609371185303" blue="0.81312543153762817" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Finished">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishedButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="24t-Lb-Pop"/>
+                                    <segue destination="Ub9-tu-gVv" kind="show" id="7GY-eE-a3F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20939725637435913" green="0.70211619138717651" blue="0.9353213906288147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -149,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1799.2" y="137.18140929535232"/>
+            <point key="canvasLocation" x="1772" y="136"/>
         </scene>
         <!--Input View Controller-->
         <scene sceneID="wSq-vI-YYv">
@@ -200,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doD-3R-AXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="135.38230884557723"/>
+            <point key="canvasLocation" x="2806" y="136"/>
         </scene>
         <!--Numbers Check View Controller-->
         <scene sceneID="joe-aM-vOu">
