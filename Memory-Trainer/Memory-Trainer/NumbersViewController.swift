@@ -33,7 +33,6 @@ class NumbersViewController: StartViewController {
     }
     @IBAction func rightButtonPressed(_ sender: Any) {
         if(digitIndex < 960){
-            digitIndex += 48
             initLevel()
         }
     }
