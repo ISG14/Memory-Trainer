@@ -8,97 +8,83 @@
 
 import UIKit
 
-class NumbersViewController: UIViewController {
+class NumbersViewController: StartViewController {
     
     //VARIABLES
-    var seconds = 0
-    var timer: Timer!
     var digitArray: [String]!
     var row = 23
     var rowPrev = 0
-    var readyButton: UIButton!
-    var timerLabel: UILabel!
     var digitIndex = 0
     
     //OUTLETS
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
-    @IBOutlet weak var timeElapsedLabel: UILabel!
+    
     @IBOutlet weak var finishedButton: UIButton!
     @IBOutlet weak var numContainerView: UIView!
     
     
     //ACTIONS
     @IBAction func leftButtonPressed(_ sender: Any) {
-        if (digitIndex > 30){
-            digitIndex -= 48
-            initNumTest()
+        if(digitIndex > 50){
+            digitIndex -= 96
+            initLevel()
         }
     }
     @IBAction func rightButtonPressed(_ sender: Any) {
-        if (digitIndex < 980){
-            initNumTest()
+        if(digitIndex < 960){
+            digitIndex += 48
+            initLevel()
         }
     }
     @IBAction func finishedButtonPressed(_ sender: Any) {
         timer.invalidate()
-    }
-    func readyButtonPressed(sender: Any) {
-        readyButton.isHidden = true
-        timerLabel.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.countdown)), userInfo: nil, repeats: true)
     }
     func numberIsPressed(sender: UIButton) {
         //print(sender.currentTitle!)
     }
     
     //FUNCTIONS
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        onStartNumTest()
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? InputViewController
         destination?.digitArray = digitArray
     }
-    
-    
-    func countdown(){
-        if(seconds == 0){
-            timer.invalidate()
-            timerLabel.isHidden = true
-            unhideAll()
-            initNumTest()
-            //Start timer again for count up
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.countup)), userInfo: nil, repeats: true)
-        } else {
-            //Countdown Label
-            timerLabel.text = "\(seconds)"
-            seconds -= 1
+
+    //Hide everything and initialize number array for printing
+    func onStartNumTest(){
+        //Hide everthing that isnt ready button
+        rightButton.center.x += 50
+        leftButton.center.x -= 50
+        finishedButton.center.y += 50
+        
+        //Initialize array
+        digitArray = [String]()
+        for _ in 0...999{
+            var digit = ""
+            digit += String(arc4random_uniform(UInt32(10)))
+            digitArray.append(digit)
         }
+        
     }
-    
-    func countup(){
-        timeElapsedLabel.text = timeString(time: TimeInterval(seconds))
-        seconds += 1
-    }
-    
-    func timeString(time:TimeInterval) -> String {
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
-    }
-    
-    func unhideAll(){
+    override func unhideAll(){
         //Unhide everything
         UIView.animate(withDuration: 0.7) {
             self.rightButton.center.x -= 50
             self.leftButton.center.x += 50
             self.finishedButton.center.y -= 50
         }
-        timeElapsedLabel.isHidden = false
+        stopwatchLabel.isHidden = false
         finishedButton.isHidden = false
     }
     
-    func initNumTest(){
-        
+    override func initLevel(){
         //Clear buttons so they dont overlap when the function is called again
         for view in numContainerView.subviews{
             view.removeFromSuperview()
@@ -129,58 +115,9 @@ class NumbersViewController: UIViewController {
             yPos += heightSpacing + 50.0
         }
     }
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        //Hide everthing that isnt ready button
-        rightButton.center.x += 50
-        leftButton.center.x -= 50
-        finishedButton.center.y += 50
-        timeElapsedLabel.isHidden = true
-        
-        //Ready Button
-        readyButton = UIButton(frame: CGRect(origin: self.view.center, size: CGSize(width: 150, height: 100)))
-        readyButton.setTitle("Ready", for: .normal)
-        readyButton.setTitleColor(.red, for: .normal)
-        readyButton.center = self.view.center
-        readyButton.center.y -= 40
-        readyButton.addTarget(self, action: #selector(readyButtonPressed), for: .touchUpInside)
-        self.view.addSubview(readyButton)
-        
-        //Initialize timer label
-        timerLabel = UILabel(frame: CGRect(origin: self.view.center, size: CGSize(width: 200, height: 100)))
-        timerLabel.isHidden = true
-        timerLabel.textAlignment = NSTextAlignment.center
-        timerLabel.textColor = .red
-        timerLabel.center = readyButton.center
-        self.view.addSubview(timerLabel)
-        
-        //Initialize array
-        digitArray = [String]()
-        for _ in 0...999{
-            var digit = ""
-            digit += String(arc4random_uniform(UInt32(10)))
-            digitArray.append(digit)
-        }
-        
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
