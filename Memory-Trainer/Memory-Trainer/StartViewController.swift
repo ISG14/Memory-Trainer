@@ -65,7 +65,6 @@ class StartViewController: UIViewController {
         stopwatchLabel.text = timeString(time: TimeInterval(seconds))
         seconds += 1
     }
-    
     func timeString(time:TimeInterval) -> String {
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60

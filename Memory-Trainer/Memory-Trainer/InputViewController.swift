@@ -29,6 +29,20 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     }
 
     //FUNCTIONS
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? NumbersCheckViewController
+        destination?.userGuesses = userGuesses
+        destination?.digitArray = digitArray
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Create first text field
+        firstTextField()
+        
+    }
+    
     func firstTextField(){
         xPos = Int((scrollView.bounds.width - 200)/2)
             
@@ -84,7 +98,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
     }
     
     func endEditTextField(textField: NumInputView){
-        textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
+        textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0)
     }
     
     func changeTextField(textField: NumInputView){
@@ -98,7 +112,7 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         
         if(text?.utf16.count == 1) {
             if(textField.index < userGuesses.count){
-                textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
+                textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0)
                 userGuesses[textField.index] = textField.text!
                 lastTextField.becomeFirstResponder()
                 if(yPos > Int(scrollView.bounds.height-50)){
@@ -112,36 +126,9 @@ class InputViewController: UIViewController, UITextFieldDelegate {
         }
 
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as? NumbersCheckViewController
-        destination?.userGuesses = userGuesses
-        destination?.digitArray = digitArray
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //Create first text field
-        firstTextField()
-    
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-
 }

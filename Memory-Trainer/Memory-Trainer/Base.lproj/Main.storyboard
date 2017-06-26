@@ -40,6 +40,7 @@
                                     <color key="titleColor" red="0.98621676420000004" green="1" blue="0.97863551559999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="leftButtonPressed:" destination="2gc-tB-mwR" eventType="touchUpInside" id="SGB-a7-4Gg"/>
                                     <action selector="leftButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YNC-Us-NxD"/>
                                 </connections>
                             </button>
@@ -52,12 +53,19 @@
                                 </state>
                                 <connections>
                                     <action selector="rightButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BU9-yX-pSB"/>
+                                    <action selector="rightButtonPressed:" destination="2gc-tB-mwR" eventType="touchUpInside" id="IkC-NN-Zvb"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KG1-dk-N3T">
+                                <rect key="frame" x="53" y="45" width="269" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20939725637435913" green="0.70211619138717651" blue="0.9353213906288147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20939725637435913" green="0.70211619138717651" blue="0.9353213906288147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="cardContainerview" destination="KG1-dk-N3T" id="mLG-QX-igx"/>
                         <outlet property="finishedButton" destination="Zcb-Ck-Nez" id="cCi-Ii-u6M"/>
                         <outlet property="leftButton" destination="RIi-Wa-nI3" id="JEn-gm-5Gv"/>
                         <outlet property="rightButton" destination="JOu-pJ-Huv" id="MvQ-Ca-Qsa"/>
@@ -79,11 +87,6 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TYY-yZ-7H5">
-                                <rect key="frame" x="52" y="46" width="269" height="512"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20939725637435913" green="0.70211619138717651" blue="0.9353213906288147" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIa-mR-4OM">
                                 <rect key="frame" x="45" y="565" width="285" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -118,6 +121,11 @@
                                     <action selector="rightButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NYh-zz-MmH"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TYY-yZ-7H5">
+                                <rect key="frame" x="53" y="45" width="269" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20939725637435913" green="0.70211619138717651" blue="0.9353213906288147" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20939725637435913" green="0.70211619138717651" blue="0.9353213906288147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -241,7 +249,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prO-pf-bjZ">
-                                <rect key="frame" x="167" y="146" width="41" height="30"/>
+                                <rect key="frame" x="132" y="124" width="110" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cards"/>
                                 <connections>
@@ -249,7 +257,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cs3-XR-SRV">
-                                <rect key="frame" x="156" y="286" width="63" height="30"/>
+                                <rect key="frame" x="124" y="256" width="126" height="91"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Numbers"/>
                                 <connections>
@@ -257,7 +265,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbT-j8-RWa">
-                                <rect key="frame" x="167" y="423" width="40" height="30"/>
+                                <rect key="frame" x="121" y="394" width="132" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Faces"/>
                             </button>

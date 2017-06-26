@@ -66,9 +66,7 @@ class NumbersViewController: StartViewController {
         //Initialize array
         digitArray = [String]()
         for _ in 0...999{
-            var digit = ""
-            digit += String(arc4random_uniform(UInt32(10)))
-            digitArray.append(digit)
+            digitArray.append(String(arc4random_uniform(UInt32(10))))
         }
         
     }
