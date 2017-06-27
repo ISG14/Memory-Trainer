@@ -15,6 +15,7 @@ class CardTestViewController: StartViewController {
     var cardHeight = 0.0
     var cardOrder: [Int]!
     var indexToPick = 0
+    var isGoingLeft = false
     
     //OUTLETS
     @IBOutlet weak var rightButton: UIButton!
@@ -25,11 +26,27 @@ class CardTestViewController: StartViewController {
     //ACTIONS
     @IBAction func rightButtonPressed(_ sender: Any) {
         if(indexToPick<48){
+            //Clear buttons so they dont overlap when the function is called again
+            for view in cardContainerview.subviews{
+                UIView.animate(withDuration: 0.7) {
+                    view.center.x = CGFloat(-1.0*self.cardWidth)
+                }
+            }
+            isGoingLeft = false
             initLevel()
         }
     }
     @IBAction func leftButtonPressed(_ sender: Any) {
+        
         if(indexToPick>3){
+            for view in cardContainerview.subviews{
+                UIView.animate(withDuration: 0.7) {
+                    view.center.x = CGFloat(self.cardWidth+Double(self.view.bounds.width))
+                }
+            }
+            
+            isGoingLeft = true
+            
             indexToPick -= 6
             initLevel()
         }
@@ -52,13 +69,13 @@ class CardTestViewController: StartViewController {
     }
     
     func createArray(){
-        //TODO: Loop that creates an in order non repeating array of numbers 0-51 
+        //Loop that creates an in order non repeating array of numbers 0-51
         var inOrderArray = [Int]()
         for num in 0...51{
             inOrderArray.append(num)
         }
         
-        //TODO: Loop that randomly pulls from array thats in order, puts them in a new array then removes num from first array
+        //Loop that randomly pulls from array thats in order, puts them in a new array then removes num from first array
         cardOrder = [Int]()
         for _ in 0...51{
             let rand = Int(arc4random_uniform(UInt32(inOrderArray.count)))
@@ -86,19 +103,22 @@ class CardTestViewController: StartViewController {
     
     override func initLevel() {
         
-        //Clear buttons so they dont overlap when the function is called again
-        for view in cardContainerview.subviews{
-            view.removeFromSuperview()
-        }
-        
         var xPos = 0.0
         
         for _ in 0...2{
             let card: UIButton!
-            card = UIButton(frame: CGRect(x: self.view., y: Double(self.view.center.y), width: cardWidth, height: cardHeight))
+            if(isGoingLeft == false){
+                card = UIButton(frame: CGRect(x: Double(self.view.bounds.width), y: Double(self.view.center.y), width: cardWidth, height: cardHeight))
+            }else{
+                card = UIButton(frame: CGRect(x: -1.0*cardWidth, y: Double(self.view.center.y), width: cardWidth, height: cardHeight))
+            }
             card.setImage(UIImage(named: "card(\(cardOrder[indexToPick]))"), for: .normal)
             card.center.y = self.cardContainerview.bounds.height/2
             self.cardContainerview.addSubview(card)
+
+            UIView.animate(withDuration: 0.7) {
+                card.center.x = CGFloat(xPos + self.cardWidth/2)
+            }
             
             xPos += cardWidth*0.2
             indexToPick += 1
