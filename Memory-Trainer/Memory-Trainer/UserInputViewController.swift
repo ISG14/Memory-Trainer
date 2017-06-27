@@ -1,40 +1,33 @@
 //
-//  InputViewController.swift
+//  UserInputViewController.swift
 //  Memory-Trainer
 //
-//  Created by Rio Lynk on 6/11/17.
+//  Created by Rio Lynk on 6/27/17.
 //  Copyright © 2017 Lampshade Software. All rights reserved.
 //
 
 import UIKit
 
-class InputViewController: UIViewController, UITextFieldDelegate {
+class UserInputViewController: UIViewController, UITextFieldDelegate {
     
     //VARIABLES
     var userGuesses = [String]()
-    var digitArray: [String]!
     var xPos = 0
     var yPos = 25
     var rowCounter = -1
     var lastTextField: NumInputView!
     var currentTextField: NumInputView!
+    var scrollView: UIScrollView!
     
     //OUTLETS
-    @IBOutlet weak var scrollView: UIScrollView!
     
     //ACTIONS
     @IBAction func skipButton(_ sender: Any) {
         currentTextField.text = " "
         moveTextFields(textField: currentTextField)
     }
-
+    
     //FUNCTIONS
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as? NumbersCheckViewController
-        destination?.userGuesses = userGuesses
-        destination?.digitArray = digitArray
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,9 +65,9 @@ class InputViewController: UIViewController, UITextFieldDelegate {
             
             //Auto-scroll
             self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
-
+            
         }
-       
+        
         xPos += 50
     }
     
@@ -105,9 +98,9 @@ class InputViewController: UIViewController, UITextFieldDelegate {
                 initNumTestInput()
             }
         }
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

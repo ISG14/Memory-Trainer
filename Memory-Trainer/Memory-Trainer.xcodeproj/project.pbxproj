@@ -21,6 +21,7 @@
 		B481AA351EF83AF40021F8EF /* NumInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA341EF83AF40021F8EF /* NumInputView.swift */; };
 		B481AA3B1EFACB2F0021F8EF /* CardTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA3A1EFACB2F0021F8EF /* CardTestViewController.swift */; };
 		B481AA3D1EFADCC60021F8EF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA3C1EFADCC60021F8EF /* StartViewController.swift */; };
+		B481AA7A1F02C6440021F8EF /* UserInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA791F02C6440021F8EF /* UserInputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +61,8 @@
 		B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersCheckViewController.swift; sourceTree = "<group>"; };
 		B481AA341EF83AF40021F8EF /* NumInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumInputView.swift; sourceTree = "<group>"; };
 		B481AA3A1EFACB2F0021F8EF /* CardTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTestViewController.swift; sourceTree = "<group>"; };
-		B481AA3C1EFADCC60021F8EF /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartViewController.swift; path = "Memory-Trainer/StartViewController.swift"; sourceTree = "<group>"; };
+		B481AA3C1EFADCC60021F8EF /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		B481AA791F02C6440021F8EF /* UserInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				B44F6E6B1EEE259D00BE43BF /* Memory-Trainer */,
-				B44F6E701EEE259D00BE43BF /* Main.storyboard */,
-				B481AA3C1EFADCC60021F8EF /* StartViewController.swift */,
 				B44F6E801EEE259D00BE43BF /* Memory-TrainerTests */,
 				B44F6E8B1EEE259E00BE43BF /* Memory-TrainerUITests */,
 				B44F6E6A1EEE259D00BE43BF /* Products */,
@@ -117,6 +117,9 @@
 				B481AA381EF869220021F8EF /* Build */,
 				B481AA371EF869130021F8EF /* Train */,
 				B481AA361EF8690D0021F8EF /* Test */,
+				B44F6E701EEE259D00BE43BF /* Main.storyboard */,
+				B481AA3C1EFADCC60021F8EF /* StartViewController.swift */,
+				B481AA791F02C6440021F8EF /* UserInputViewController.swift */,
 			);
 			path = "Memory-Trainer";
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				B44F6E9B1EEE263600BE43BF /* NumbersViewController.swift in Sources */,
 				B44F6E6F1EEE259D00BE43BF /* ViewController.swift in Sources */,
 				B481AA321EF2E5100021F8EF /* NumbersCheckViewController.swift in Sources */,
+				B481AA7A1F02C6440021F8EF /* UserInputViewController.swift in Sources */,
 				B44F6E6D1EEE259D00BE43BF /* AppDelegate.swift in Sources */,
 				B481AA3D1EFADCC60021F8EF /* StartViewController.swift in Sources */,
 				B481AA351EF83AF40021F8EF /* NumInputView.swift in Sources */,
@@ -378,7 +382,6 @@
 				B44F6E711EEE259D00BE43BF /* Base */,
 			);
 			name = Main.storyboard;
-			path = "Memory-Trainer";
 			sourceTree = "<group>";
 		};
 		B44F6E751EEE259D00BE43BF /* LaunchScreen.storyboard */ = {
