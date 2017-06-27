@@ -15,9 +15,10 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
     var xPos = 0
     var yPos = 25
     var rowCounter = -1
-    var lastTextField: NumInputView!
-    var currentTextField: NumInputView!
+    var lastTextField: InputViewTextField!
+    var currentTextField: InputViewTextField!
     var scrollView: UIScrollView!
+    var useNumpad = true
     
     //OUTLETS
     
@@ -33,7 +34,7 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func initNumTestInput(){
+    func initLevel(){
         
         if(rowCounter == 3){
             xPos = Int((scrollView.bounds.width - 200)/2)
@@ -42,7 +43,7 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
         }
         
         //Create a new text field for next number
-        let newTextField = NumInputView(frame: CGRect(x: xPos, y: yPos, width: 50, height: 50), index: userGuesses.count)
+        let newTextField = InputViewTextField(frame: CGRect(x: xPos, y: yPos, width: 50, height: 50), index: userGuesses.count, Boolean: useNumpad)
         newTextField.becomeFirstResponder()
         newTextField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0.5)
         scrollView.addSubview(newTextField)
@@ -68,17 +69,17 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
         xPos += 50
     }
     
-    func endEditTextField(textField: NumInputView){
+    func endEditTextField(textField: InputViewTextField){
         textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0)
     }
     
-    func changeTextField(textField: NumInputView){
+    func changeTextField(textField: InputViewTextField){
         currentTextField = textField
         textField.text = ""
         textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0.5)
     }
     
-    func moveTextFields(textField: NumInputView){
+    func moveTextFields(textField: InputViewTextField){
         let text = textField.text
         
         if(text?.utf16.count == 1) {
@@ -92,7 +93,7 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
             }else{
                 userGuesses.append(textField.text!)
                 textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
-                initNumTestInput()
+                initLevel()
             }
         }
         

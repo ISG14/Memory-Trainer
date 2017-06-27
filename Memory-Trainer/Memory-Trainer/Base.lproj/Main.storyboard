@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="1772" y="-678.71064467766121"/>
         </scene>
-        <!--User Input View Controller-->
+        <!--Card Input View Controller-->
         <scene sceneID="9gV-ct-hmW">
             <objects>
-                <viewController id="M7L-AA-dES" customClass="UserInputViewController" customModule="Memory_Trainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M7L-AA-dES" customClass="CardInputViewController" customModule="Memory_Trainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vrW-rB-8Eb"/>
                         <viewControllerLayoutGuide type="bottom" id="g2k-0G-QNO"/>
@@ -106,6 +106,7 @@
                                 </state>
                                 <connections>
                                     <action selector="skipButton:" destination="Ub9-tu-gVv" eventType="touchUpInside" id="YPT-VS-geI"/>
+                                    <action selector="skipButtonPressed:" destination="M7L-AA-dES" eventType="touchUpInside" id="4lV-o2-mdP"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Idz-Zq-h1H">
@@ -116,6 +117,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20939725637435913" green="0.70211619138717651" blue="0.9353213906288147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="levelScrollView" destination="Idz-Zq-h1H" id="9nN-Gq-LLS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCU-fE-t6r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

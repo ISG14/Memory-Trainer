@@ -35,7 +35,7 @@ class InputViewController: UserInputViewController {
         
         scrollView = levelScrollView
         xPos = Int((scrollView.bounds.width - 200)/2)
-        initNumTestInput()
+        initLevel()
         
     }
     
