@@ -67,6 +67,12 @@ class CardTestViewController: StartViewController {
         
         
     }
+
+    func hideEverything(){
+        rightButton.center.x += 50
+        leftButton.center.x -= 50
+        finishedButton.center.y += 50
+    }
     
     func createArray(){
         //Loop that creates an in order non repeating array of numbers 0-51
@@ -82,12 +88,6 @@ class CardTestViewController: StartViewController {
             cardOrder.append(inOrderArray[rand])
             inOrderArray.remove(at: rand)
         }
-    }
-
-    func hideEverything(){
-        rightButton.center.x += 50
-        leftButton.center.x -= 50
-        finishedButton.center.y += 50
     }
     
     override func unhideAll(){

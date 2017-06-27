@@ -31,9 +31,6 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        xPos = Int((scrollView.bounds.width - 200)/2)
-        initNumTestInput()
-        
     }
     
     func initNumTestInput(){
