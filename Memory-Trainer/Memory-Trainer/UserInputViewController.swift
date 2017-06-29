@@ -19,19 +19,20 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
     var currentTextField: InputViewTextField!
     var scrollView: UIScrollView!
     var useNumpad = true
+    var referenceButton: UIButton!
     
     //OUTLETS
     
     //ACTIONS
-    @IBAction func skipButton(_ sender: Any) {
-        currentTextField.text = " "
-        moveTextFields(textField: currentTextField)
-    }
     
     //FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    func createCardKeyboard(){
+        CardKeyboard.createCardKeyboard(view: self, refButton: referenceButton)
     }
     
     func initLevel(){
@@ -96,11 +97,95 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
                 initLevel()
             }
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+class InputViewTextField: UITextField {
+    
+    var index: Int!
+    var useNumpad = true
+    
+    
+    init(frame: CGRect, index: Int, Boolean: Bool){
+        super.init(frame: frame)
+        self.index = index
+        useNumpad = Boolean
+        self.backgroundColor = .blue
+        self.textAlignment = .center
+        self.textColor = .white
+        if(useNumpad == true){
+            self.keyboardType = UIKeyboardType.numberPad
+        }else{
+            self.inputView = UIView()
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+
+class CardKeyboard {
+
+    static func createCardKeyboard(view: UIViewController, refButton: UIButton) {
+        
+        //VARIABLES
+        var keyboardOrder = ["D", "S", "H", "C", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2", "A"]
+        //Create view to hold card keyboard
+        print(refButton.bounds.height/2.0)
+        let cardKeyboardContainer = UIView(frame: CGRect(x: 0, y: (Double(refButton.center.y)+(Double(refButton.bounds.height)/2))-35, width: Double(view.view.bounds.width), height: (Double(view.view.bounds.height)-Double(refButton.center.y)-50)))
+        cardKeyboardContainer.backgroundColor = .black
+        view.view.addSubview(cardKeyboardContainer)
+        //Establish first and second width spacing and height spacing
+        let firstWidthSpacing = (Double(cardKeyboardContainer.bounds.width)-160.0)/7.0
+        let secondWidthSpacing = (Double(cardKeyboardContainer.bounds.width)-160.0)/11.0
+        let heightSpacing = (Double(cardKeyboardContainer.bounds.height) - 160)/7.0
+        var yPos = heightSpacing
+        
+        //Create for loop for card number/face
+        for _ in 0...2{
+            var xPos1 = firstWidthSpacing*2.0
+            for _ in 0...3{
+                //Create button
+                let button = UIButton(frame: CGRect(x: xPos1, y: yPos, width: 40.0, height: 40.0))
+                button.setTitle(keyboardOrder.popLast(), for: .normal)
+                button.tag = keyboardOrder.count
+                button.addTarget(self, action: #selector(CardKeyboard.cardKeyboardButtonPressed), for: .touchUpInside)
+                button.backgroundColor = .red
+                cardKeyboardContainer.addSubview(button)
+                xPos1 += firstWidthSpacing + 40
+            }
+            yPos += heightSpacing + 40
+        }
+        //Create last number button in middle
+        let button = UIButton(frame: CGRect(x: Double(view.view.bounds.width/2), y: yPos, width: 40.0, height: 40.0))
+        button.center.x = cardKeyboardContainer.bounds.width/2
+        button.setTitle(keyboardOrder.popLast(), for: .normal)
+        button.tag = keyboardOrder.count
+        button.addTarget(self, action: #selector(CardKeyboard.cardKeyboardButtonPressed), for: .touchUpInside)
+        button.backgroundColor = .red
+        cardKeyboardContainer.addSubview(button)
+        yPos += heightSpacing + 40
+        //Create for loop for card suit
+        var xPos = secondWidthSpacing*4
+        for _ in 0...3{
+            let button = UIButton(frame: CGRect(x: xPos, y: yPos, width: 40.0, height: 40.0))
+            button.setTitle(keyboardOrder.popLast(), for: .normal)
+            button.tag = keyboardOrder.count
+            button.addTarget(self, action: #selector(CardKeyboard.cardKeyboardButtonPressed), for: .touchUpInside)
+            button.backgroundColor = .red
+            cardKeyboardContainer.addSubview(button)
+            xPos += secondWidthSpacing+40
+        }
+    }
+    @objc static func cardKeyboardButtonPressed(){
+        print("got here")
     }
 }

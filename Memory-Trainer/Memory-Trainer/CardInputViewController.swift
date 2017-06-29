@@ -15,7 +15,7 @@ class CardInputViewController: UserInputViewController {
     
     //OUTLETS
     @IBOutlet weak var levelScrollView: UIScrollView!
-    
+    @IBOutlet weak var skipButton: UIButton!
     
     //ACTIONS
     @IBAction func skipButtonPressed(_ sender: Any) {
@@ -30,10 +30,11 @@ class CardInputViewController: UserInputViewController {
         super.viewDidLoad()
 
         scrollView = levelScrollView
+        referenceButton = skipButton
         xPos = Int((scrollView.bounds.width - 200)/2)
         
         useNumpad = false
-        
+        createCardKeyboard()
         initLevel()
     }
 

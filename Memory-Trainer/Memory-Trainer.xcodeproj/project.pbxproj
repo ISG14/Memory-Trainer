@@ -22,7 +22,6 @@
 		B481AA3D1EFADCC60021F8EF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA3C1EFADCC60021F8EF /* StartViewController.swift */; };
 		B481AA7A1F02C6440021F8EF /* UserInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA791F02C6440021F8EF /* UserInputViewController.swift */; };
 		B481AA7C1F02EA330021F8EF /* CardInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA7B1F02EA330021F8EF /* CardInputViewController.swift */; };
-		B481AA7E1F02F3A20021F8EF /* InputViewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA7D1F02F3A20021F8EF /* InputViewTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +63,6 @@
 		B481AA3C1EFADCC60021F8EF /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B481AA791F02C6440021F8EF /* UserInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInputViewController.swift; sourceTree = "<group>"; };
 		B481AA7B1F02EA330021F8EF /* CardInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardInputViewController.swift; sourceTree = "<group>"; };
-		B481AA7D1F02F3A20021F8EF /* InputViewTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +119,6 @@
 				B481AA361EF8690D0021F8EF /* Test */,
 				B44F6E701EEE259D00BE43BF /* Main.storyboard */,
 				B481AA3C1EFADCC60021F8EF /* StartViewController.swift */,
-				B481AA7D1F02F3A20021F8EF /* InputViewTextField.swift */,
 				B481AA791F02C6440021F8EF /* UserInputViewController.swift */,
 			);
 			path = "Memory-Trainer";
@@ -337,7 +334,6 @@
 				B481AA3B1EFACB2F0021F8EF /* CardTestViewController.swift in Sources */,
 				B44F6E9B1EEE263600BE43BF /* NumbersViewController.swift in Sources */,
 				B44F6E6F1EEE259D00BE43BF /* ViewController.swift in Sources */,
-				B481AA7E1F02F3A20021F8EF /* InputViewTextField.swift in Sources */,
 				B481AA321EF2E5100021F8EF /* NumbersCheckViewController.swift in Sources */,
 				B481AA7A1F02C6440021F8EF /* UserInputViewController.swift in Sources */,
 				B44F6E6D1EEE259D00BE43BF /* AppDelegate.swift in Sources */,

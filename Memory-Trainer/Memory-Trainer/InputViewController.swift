@@ -18,7 +18,7 @@ class InputViewController: UserInputViewController {
     
     
     //ACTIONS
-    @IBAction override func skipButton(_ sender: Any) {
+    @IBAction func skipButton(_ sender: Any) {
         currentTextField.text = " "
         moveTextFields(textField: currentTextField)
     }
