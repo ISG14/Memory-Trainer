@@ -34,7 +34,7 @@ class InputViewController: UserInputViewController {
         super.viewDidLoad()
         
         scrollView = levelScrollView
-        xPos = Int((scrollView.bounds.width - 200)/2)
+        setUp(isCardLevel: false)
         initLevel()
         
     }

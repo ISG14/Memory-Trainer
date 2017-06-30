@@ -31,10 +31,7 @@ class CardInputViewController: UserInputViewController {
 
         scrollView = levelScrollView
         referenceButton = skipButton
-        xPos = Int((scrollView.bounds.width - 200)/2)
-        
-        useNumpad = false
-        createCardKeyboard()
+        setUp(isCardLevel: true)
         initLevel()
     }
 
