@@ -32,7 +32,7 @@ class StartViewController: UIViewController {
         readyButton.setTitle("Ready", for: .normal)
         readyButton.setTitleColor(.red, for: .normal)
         readyButton.center.x = self.view.bounds.width/2
-        readyButton.center.y = self.view.bounds.height/2
+        readyButton.center.y = self.view.frame.height/2
         readyButton.addTarget(self, action: #selector(readyButtonPressed), for: .touchUpInside)
         self.view.addSubview(readyButton)
         

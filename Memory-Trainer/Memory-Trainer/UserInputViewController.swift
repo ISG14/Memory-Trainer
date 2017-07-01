@@ -24,7 +24,46 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
     
     //OUTLETS
     
+    
     //ACTIONS
+    func cardKeyboardButtonPressed(button: UIButton){
+        if(button.title(for: .normal) == "10"){
+            numToEnter = 3
+        }
+        currentTextField.text = currentTextField.text! + button.title(for: .normal)!
+        moveTextFields(textField: currentTextField)
+        
+    }
+    
+    func endEditTextField(textField: InputViewTextField){
+        textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0)
+    }
+    
+    func changeTextField(textField: InputViewTextField){
+        currentTextField = textField
+        textField.text = ""
+        textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0.5)
+    }
+    
+    func moveTextFields(textField: InputViewTextField){
+        let text = textField.text
+        
+        if(text?.utf16.count == numToEnter) {
+            if(textField.index < userGuesses.count){
+                textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0)
+                userGuesses[textField.index] = textField.text!
+                lastTextField.becomeFirstResponder()
+                if(yPos > Int(scrollView.bounds.height-50)){
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
+                }
+            }else{
+                userGuesses.append(textField.text!)
+                textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
+                initLevel()
+            }
+            numToEnter = 2
+        }
+    }
     
     //FUNCTIONS
     override func viewDidLoad() {
@@ -45,7 +84,55 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
     }
     
     func createCardKeyboard(){
-        CardKeyboard.createCardKeyboard(view: self, refButton: referenceButton)
+        //CardKeyboard.createCardKeyboard(view: self, refButton: referenceButton)
+        
+        //VARIABLES
+        var keyboardOrder = ["D", "S", "H", "C", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2", "A"]
+        //Create view to hold card keyboard
+        print(referenceButton.bounds.height/2.0)
+        let cardKeyboardContainer = UIView(frame: CGRect(x: 0, y: (Double(referenceButton.center.y))-15, width: Double(self.view.bounds.width), height: (Double(self.view.bounds.height)-Double(referenceButton.center.y)-50)))
+        cardKeyboardContainer.backgroundColor = .black
+        self.view.addSubview(cardKeyboardContainer)
+        //Establish first and second width spacing and height spacing
+        let firstWidthSpacing = (Double(cardKeyboardContainer.bounds.width)-160.0)/7.0
+        let secondWidthSpacing = (Double(cardKeyboardContainer.bounds.width)-160.0)/11.0
+        let heightSpacing = (Double(cardKeyboardContainer.bounds.height) - 200)/6.0
+        var yPos = heightSpacing
+        
+        //Create for loop for card number/face
+        for _ in 0...2{
+            var xPos1 = firstWidthSpacing*2.0
+            for _ in 0...3{
+                //Create button
+                let button = UIButton(frame: CGRect(x: xPos1, y: yPos, width: 40.0, height: 40.0))
+                button.setTitle(keyboardOrder.popLast(), for: .normal)
+                button.tag = keyboardOrder.count
+                button.addTarget(self, action: #selector(cardKeyboardButtonPressed), for: .touchUpInside)
+                button.backgroundColor = .red
+                cardKeyboardContainer.addSubview(button)
+                xPos1 += firstWidthSpacing + 40
+            }
+            yPos += heightSpacing + 40
+        }
+        //Create king button in middle of row
+        let button = UIButton(frame: CGRect(x: Double(cardKeyboardContainer.bounds.width/2)-20, y: yPos, width: 40.0, height: 40.0))
+        button.setTitle(keyboardOrder.popLast(), for: .normal)
+        button.tag = keyboardOrder.count
+        button.addTarget(self, action: #selector(cardKeyboardButtonPressed), for: .touchUpInside)
+        button.backgroundColor = .red
+        cardKeyboardContainer.addSubview(button)
+        yPos += heightSpacing + 40
+        //Create for loop for card suits
+        var xPos = secondWidthSpacing*4
+        for _ in 0...3{
+            let button = UIButton(frame: CGRect(x: xPos, y: yPos, width: 40.0, height: 40.0))
+            button.setTitle(keyboardOrder.popLast(), for: .normal)
+            button.tag = keyboardOrder.count
+            button.addTarget(self, action: #selector(cardKeyboardButtonPressed), for: .touchUpInside)
+            button.backgroundColor = .red
+            cardKeyboardContainer.addSubview(button)
+            xPos += secondWidthSpacing+40
+        }
     }
     
     func initLevel(){
@@ -83,34 +170,7 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
         xPos += 50
     }
     
-    func endEditTextField(textField: InputViewTextField){
-        textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0)
-    }
     
-    func changeTextField(textField: InputViewTextField){
-        currentTextField = textField
-        textField.text = ""
-        textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0.5)
-    }
-    
-    func moveTextFields(textField: InputViewTextField){
-        let text = textField.text
-        
-        if(text?.utf16.count == numToEnter) {
-            if(textField.index < userGuesses.count){
-                textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0)
-                userGuesses[textField.index] = textField.text!
-                lastTextField.becomeFirstResponder()
-                if(yPos > Int(scrollView.bounds.height-50)){
-                    self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
-                }
-            }else{
-                userGuesses.append(textField.text!)
-                textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
-                initLevel()
-            }
-        }
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -142,62 +202,4 @@ class InputViewTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-}
-
-
-class CardKeyboard {
-
-    static func createCardKeyboard(view: UIViewController, refButton: UIButton) {
-        
-        //VARIABLES
-        var keyboardOrder = ["D", "S", "H", "C", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2", "A"]
-        //Create view to hold card keyboard
-        print(refButton.bounds.height/2.0)
-        let cardKeyboardContainer = UIView(frame: CGRect(x: 0, y: (Double(refButton.center.y)), width: Double(view.view.bounds.width), height: (Double(view.view.bounds.height)-Double(refButton.center.y)-50)))
-        cardKeyboardContainer.backgroundColor = .black
-        view.view.addSubview(cardKeyboardContainer)
-        //Establish first and second width spacing and height spacing
-        let firstWidthSpacing = (Double(cardKeyboardContainer.bounds.width)-160.0)/7.0
-        let secondWidthSpacing = (Double(cardKeyboardContainer.bounds.width)-160.0)/11.0
-        let heightSpacing = (Double(cardKeyboardContainer.bounds.height) - 200)/6.0
-        var yPos = heightSpacing
-        
-        //Create for loop for card number/face
-        for _ in 0...2{
-            var xPos1 = firstWidthSpacing*2.0
-            for _ in 0...3{
-                //Create button
-                let button = UIButton(frame: CGRect(x: xPos1, y: yPos, width: 40.0, height: 40.0))
-                button.setTitle(keyboardOrder.popLast(), for: .normal)
-                button.tag = keyboardOrder.count
-                button.addTarget(self, action: #selector(CardKeyboard.cardKeyboardButtonPressed), for: .touchUpInside)
-                button.backgroundColor = .red
-                cardKeyboardContainer.addSubview(button)
-                xPos1 += firstWidthSpacing + 40
-            }
-            yPos += heightSpacing + 40
-        }
-        //Create last number button in middle
-        let button = UIButton(frame: CGRect(x: Double(cardKeyboardContainer.bounds.width/2)-20, y: yPos, width: 40.0, height: 40.0))
-        button.setTitle(keyboardOrder.popLast(), for: .normal)
-        button.tag = keyboardOrder.count
-        button.addTarget(self, action: #selector(CardKeyboard.cardKeyboardButtonPressed), for: .touchUpInside)
-        button.backgroundColor = .red
-        cardKeyboardContainer.addSubview(button)
-        yPos += heightSpacing + 40
-        //Create for loop for card suits
-        var xPos = secondWidthSpacing*4
-        for _ in 0...3{
-            let button = UIButton(frame: CGRect(x: xPos, y: yPos, width: 40.0, height: 40.0))
-            button.setTitle(keyboardOrder.popLast(), for: .normal)
-            button.tag = keyboardOrder.count
-            button.addTarget(self, action: #selector(CardKeyboard.cardKeyboardButtonPressed), for: .touchUpInside)
-            button.backgroundColor = .red
-            cardKeyboardContainer.addSubview(button)
-            xPos += secondWidthSpacing+40
-        }
-    }
-    @objc static func cardKeyboardButtonPressed(){
-        print("got here")
-    }
 }
