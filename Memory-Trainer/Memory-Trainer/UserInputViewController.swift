@@ -89,8 +89,7 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
         //VARIABLES
         var keyboardOrder = ["D", "S", "H", "C", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2", "A"]
         //Create view to hold card keyboard
-        print(referenceButton.bounds.height/2.0)
-        let cardKeyboardContainer = UIView(frame: CGRect(x: 0, y: (Double(referenceButton.center.y))-15, width: Double(self.view.bounds.width), height: (Double(self.view.bounds.height)-Double(referenceButton.center.y)-50)))
+        let cardKeyboardContainer = UIView(frame: CGRect(x: 0, y: (Double(referenceButton.center.y))-35, width: Double(self.view.bounds.width), height: (Double(self.view.bounds.height)-Double(referenceButton.center.y)-50)))
         cardKeyboardContainer.backgroundColor = .black
         self.view.addSubview(cardKeyboardContainer)
         //Establish first and second width spacing and height spacing
@@ -114,6 +113,7 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
             }
             yPos += heightSpacing + 40
         }
+        
         //Create king button in middle of row
         let button = UIButton(frame: CGRect(x: Double(cardKeyboardContainer.bounds.width/2)-20, y: yPos, width: 40.0, height: 40.0))
         button.setTitle(keyboardOrder.popLast(), for: .normal)
@@ -122,6 +122,7 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
         button.backgroundColor = .red
         cardKeyboardContainer.addSubview(button)
         yPos += heightSpacing + 40
+        
         //Create for loop for card suits
         var xPos = secondWidthSpacing*4
         for _ in 0...3{
@@ -169,8 +170,6 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
         
         xPos += 50
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
