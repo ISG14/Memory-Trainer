@@ -44,6 +44,11 @@ class NumbersViewController: StartViewController {
     }
     
     //FUNCTIONS
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? InputViewController
+        destination?.digitArray = digitArray
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,11 +56,6 @@ class NumbersViewController: StartViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as? InputViewController
-        destination?.digitArray = digitArray
-    }
-
     //Hide everything and initialize number array for printing
     func onStartNumTest(){
         //Hide everthing that isnt ready button

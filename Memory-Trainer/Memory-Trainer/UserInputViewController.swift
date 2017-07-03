@@ -66,6 +66,11 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
     }
     
     //FUNCTIONS
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? NumbersCheckViewController
+        destination?.userGuesses = userGuesses
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

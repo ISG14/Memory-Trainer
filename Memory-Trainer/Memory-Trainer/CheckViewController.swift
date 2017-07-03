@@ -1,40 +1,39 @@
 //
-//  InputViewController.swift
+//  CheckViewController.swift
 //  Memory-Trainer
 //
-//  Created by Rio Lynk on 6/11/17.
+//  Created by Rio Lynk on 7/2/17.
 //  Copyright © 2017 Lampshade Software. All rights reserved.
 //
 
 import UIKit
 
-class InputViewController: UserInputViewController {
+class CheckViewController: UIViewController {
     
     //VARIABLES
+    var userGuesses: [String]!
     var digitArray: [String]!
+    var numCorrect = 0
+    var numIncorrect = 0
     
     //OUTLETS
-    @IBOutlet weak var levelScrollView: UIScrollView!
     
     
     //ACTIONS
-    @IBAction func skipButton(_ sender: Any) {
-        currentTextField.text = " "
-        moveTextFields(textField: currentTextField)
-    }
-
+    
+    
     //FUNCTIONS
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        scrollView = levelScrollView
-        setUp(isCardLevel: false)
-        initLevel()
+
         
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
 }
