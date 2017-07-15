@@ -1,14 +1,14 @@
 //
-//  CardTestViewController.swift
+//  CardTestVC.swift
 //  Memory-Trainer
 //
-//  Created by Rio Lynk on 6/21/17.
+//  Created by Rio Lynk on 7/14/17.
 //  Copyright © 2017 Lampshade Software. All rights reserved.
 //
 
 import UIKit
 
-class CardTestViewController: StartViewController {
+class CardTestVC: StartViewController {
     
     //VARIABLES
     var cardWidth = 0.0
@@ -37,7 +37,6 @@ class CardTestViewController: StartViewController {
         }
     }
     @IBAction func leftButtonPressed(_ sender: Any) {
-        
         if(indexToPick>3){
             for view in cardContainerview.subviews{
                 UIView.animate(withDuration: 0.7) {
@@ -55,7 +54,6 @@ class CardTestViewController: StartViewController {
         timer.invalidate()
     }
     
-    
     //FUNCTIONS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? CheckViewController
@@ -64,18 +62,17 @@ class CardTestViewController: StartViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         hideEverything()
         
         createArray()
-        
-        //cardWidth = Double(self.view.bounds.width
+       
         cardWidth = (Double(self.cardContainerview.bounds.width)/1.40)
         cardHeight = cardWidth*1.395973154362416
         
         
     }
-
+    
     func hideEverything(){
         rightButton.center.x += 50
         leftButton.center.x -= 50
@@ -123,7 +120,7 @@ class CardTestViewController: StartViewController {
             card.setImage(UIImage(named: "card(\(cardOrder[indexToPick]))"), for: .normal)
             card.center.y = self.cardContainerview.bounds.height/2
             self.cardContainerview.addSubview(card)
-
+            
             UIView.animate(withDuration: 0.7) {
                 card.center.x = CGFloat(xPos + self.cardWidth/2)
             }
@@ -131,12 +128,12 @@ class CardTestViewController: StartViewController {
             xPos += cardWidth*0.2
             indexToPick += 1
         }
-  
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }

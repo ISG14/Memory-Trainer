@@ -21,6 +21,7 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
     var useNumpad = true
     var referenceButton: UIButton!
     var numToEnter: Int!
+    var numBase: Int!
     
     //OUTLETS
     
@@ -61,7 +62,7 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
                 textField.backgroundColor = UIColor(red:1.00, green:1.00, blue:0.00, alpha:0)
                 initLevel()
             }
-            numToEnter = 2
+            numToEnter = numBase
         }
     }
     
@@ -81,10 +82,12 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
             xPos = Int((scrollView.bounds.width - 200)/2)
             useNumpad = false
             createCardKeyboard()
-            numToEnter = 2
+            numBase = 2
+            numToEnter = numBase
         }else{
             xPos = Int((scrollView.bounds.width - 200)/2)
-            numToEnter = 1
+            numBase = 1
+            numToEnter = numBase
         }
     }
     
@@ -94,7 +97,7 @@ class UserInputViewController: UIViewController, UITextFieldDelegate {
         //VARIABLES
         var keyboardOrder = ["D", "S", "H", "C", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2", "A"]
         //Create view to hold card keyboard
-        let cardKeyboardContainer = UIView(frame: CGRect(x: 0, y: (Double(referenceButton.center.y))-35, width: Double(self.view.bounds.width), height: (Double(self.view.bounds.height)-Double(referenceButton.center.y)-50)))
+        let cardKeyboardContainer = UIView(frame: CGRect(x: 0, y: (Double(referenceButton.center.y+referenceButton.bounds.height/2))-35, width: Double(self.view.bounds.width), height: (Double(self.view.bounds.height)-Double(referenceButton.center.y)-50)))
         cardKeyboardContainer.backgroundColor = .black
         self.view.addSubview(cardKeyboardContainer)
         //Establish first and second width spacing and height spacing

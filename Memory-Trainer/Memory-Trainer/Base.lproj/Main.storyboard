@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I5d-Nj-R1X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I5d-Nj-R1X">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Card Test View Controller-->
+        <!--Card TestVC-->
         <scene sceneID="4bi-bv-DJQ">
             <objects>
-                <viewController id="2gc-tB-mwR" customClass="CardTestViewController" customModule="Memory_Trainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2gc-tB-mwR" customClass="CardTestVC" customModule="Memory_Trainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OwW-qW-YyE"/>
                         <viewControllerLayoutGuide type="bottom" id="Fep-S7-m7n"/>
@@ -34,8 +34,8 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="finishedButtonPressed:" destination="2gc-tB-mwR" eventType="touchUpInside" id="0dF-Rk-ues"/>
                                     <action selector="finishedButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KHo-R4-COX"/>
-                                    <action selector="finishedButtonPressed:" destination="2gc-tB-mwR" eventType="touchUpInside" id="k8O-yW-aIy"/>
                                     <segue destination="M7L-AA-dES" kind="show" id="VHN-Jq-gBA"/>
                                 </connections>
                             </button>
@@ -47,7 +47,7 @@
                                     <color key="titleColor" red="0.98621676420000004" green="1" blue="0.97863551559999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="leftButtonPressed:" destination="2gc-tB-mwR" eventType="touchUpInside" id="SGB-a7-4Gg"/>
+                                    <action selector="leftButtonPressed:" destination="2gc-tB-mwR" eventType="touchUpInside" id="Xkb-Ze-ye9"/>
                                     <action selector="leftButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YNC-Us-NxD"/>
                                 </connections>
                             </button>
@@ -60,7 +60,7 @@
                                 </state>
                                 <connections>
                                     <action selector="rightButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BU9-yX-pSB"/>
-                                    <action selector="rightButtonPressed:" destination="2gc-tB-mwR" eventType="touchUpInside" id="IkC-NN-Zvb"/>
+                                    <action selector="rightButtonPressed:" destination="2gc-tB-mwR" eventType="touchUpInside" id="bBP-ec-S8M"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -68,19 +68,19 @@
                     </view>
                     <connections>
                         <outlet property="cardContainerview" destination="KG1-dk-N3T" id="mLG-QX-igx"/>
-                        <outlet property="finishedButton" destination="Zcb-Ck-Nez" id="cCi-Ii-u6M"/>
-                        <outlet property="leftButton" destination="RIi-Wa-nI3" id="JEn-gm-5Gv"/>
-                        <outlet property="rightButton" destination="JOu-pJ-Huv" id="MvQ-Ca-Qsa"/>
+                        <outlet property="finishedButton" destination="Zcb-Ck-Nez" id="xAI-Ul-do0"/>
+                        <outlet property="leftButton" destination="RIi-Wa-nI3" id="78Q-ng-r03"/>
+                        <outlet property="rightButton" destination="JOu-pJ-Huv" id="ud0-wX-QXJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xNZ-f5-S5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1772" y="-678.71064467766121"/>
         </scene>
-        <!--Card Input View Controller-->
+        <!--Card Test InputVC-->
         <scene sceneID="9gV-ct-hmW">
             <objects>
-                <viewController id="M7L-AA-dES" customClass="CardInputViewController" customModule="Memory_Trainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M7L-AA-dES" customClass="CardTestInputVC" customModule="Memory_Trainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vrW-rB-8Eb"/>
                         <viewControllerLayoutGuide type="bottom" id="g2k-0G-QNO"/>
@@ -110,7 +110,7 @@
                                 </state>
                                 <connections>
                                     <action selector="skipButton:" destination="Ub9-tu-gVv" eventType="touchUpInside" id="YPT-VS-geI"/>
-                                    <action selector="skipButtonPressed:" destination="M7L-AA-dES" eventType="touchUpInside" id="4lV-o2-mdP"/>
+                                    <action selector="skipButtonPressed:" destination="M7L-AA-dES" eventType="touchUpInside" id="tQk-4W-oTL"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Idz-Zq-h1H">
@@ -122,18 +122,18 @@
                         <color key="backgroundColor" red="0.20939725637435913" green="0.70211619138717651" blue="0.9353213906288147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="levelScrollView" destination="Idz-Zq-h1H" id="9nN-Gq-LLS"/>
-                        <outlet property="skipButton" destination="Ui8-i8-Zng" id="xQC-FW-QUQ"/>
+                        <outlet property="levelScrollView" destination="Idz-Zq-h1H" id="vXF-GA-xJL"/>
+                        <outlet property="skipButton" destination="Ui8-i8-Zng" id="ovt-Ee-5Pd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCU-fE-t6r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2855" y="-680"/>
         </scene>
-        <!--View Controller-->
+        <!--Check View Controller-->
         <scene sceneID="WMb-lz-J7Z">
             <objects>
-                <viewController id="Dhp-B5-K2c" sceneMemberID="viewController">
+                <viewController id="Dhp-B5-K2c" customClass="CheckViewController" customModule="Memory_Trainer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XBf-pJ-ufM"/>
                         <viewControllerLayoutGuide type="bottom" id="8Hr-ux-scn"/>

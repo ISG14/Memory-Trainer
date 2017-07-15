@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B43B88DF1F196546002E22E9 /* CardTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43B88DE1F196546002E22E9 /* CardTestVC.swift */; };
+		B43B88E11F196560002E22E9 /* CardTestCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43B88E01F196560002E22E9 /* CardTestCheckVC.swift */; };
+		B43B88E31F1A2957002E22E9 /* CardTestInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43B88E21F1A2957002E22E9 /* CardTestInputVC.swift */; };
 		B44F6E6D1EEE259D00BE43BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E6C1EEE259D00BE43BF /* AppDelegate.swift */; };
 		B44F6E6F1EEE259D00BE43BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E6E1EEE259D00BE43BF /* ViewController.swift */; };
 		B44F6E721EEE259D00BE43BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B44F6E701EEE259D00BE43BF /* Main.storyboard */; };
@@ -19,10 +22,8 @@
 		B451D9601F08C9A2007EA12F /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451D95F1F08C9A2007EA12F /* CheckViewController.swift */; };
 		B481AA301EF2C18E0021F8EF /* UtilsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */; };
 		B481AA321EF2E5100021F8EF /* NumbersCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */; };
-		B481AA3B1EFACB2F0021F8EF /* CardTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA3A1EFACB2F0021F8EF /* CardTestViewController.swift */; };
 		B481AA3D1EFADCC60021F8EF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA3C1EFADCC60021F8EF /* StartViewController.swift */; };
 		B481AA7A1F02C6440021F8EF /* UserInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA791F02C6440021F8EF /* UserInputViewController.swift */; };
-		B481AA7C1F02EA330021F8EF /* CardInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA7B1F02EA330021F8EF /* CardInputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B43B88DE1F196546002E22E9 /* CardTestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTestVC.swift; sourceTree = "<group>"; };
+		B43B88E01F196560002E22E9 /* CardTestCheckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTestCheckVC.swift; sourceTree = "<group>"; };
+		B43B88E21F1A2957002E22E9 /* CardTestInputVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTestInputVC.swift; sourceTree = "<group>"; };
 		B44F6E691EEE259D00BE43BF /* Memory-Trainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Memory-Trainer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44F6E6C1EEE259D00BE43BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B44F6E6E1EEE259D00BE43BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,10 +65,8 @@
 		B451D95F1F08C9A2007EA12F /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsViewController.swift; sourceTree = "<group>"; };
 		B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersCheckViewController.swift; sourceTree = "<group>"; };
-		B481AA3A1EFACB2F0021F8EF /* CardTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTestViewController.swift; sourceTree = "<group>"; };
 		B481AA3C1EFADCC60021F8EF /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B481AA791F02C6440021F8EF /* UserInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInputViewController.swift; sourceTree = "<group>"; };
-		B481AA7B1F02EA330021F8EF /* CardInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardInputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,8 +183,9 @@
 		B481AA391EFA98530021F8EF /* Cards Test */ = {
 			isa = PBXGroup;
 			children = (
-				B481AA3A1EFACB2F0021F8EF /* CardTestViewController.swift */,
-				B481AA7B1F02EA330021F8EF /* CardInputViewController.swift */,
+				B43B88DE1F196546002E22E9 /* CardTestVC.swift */,
+				B43B88E21F1A2957002E22E9 /* CardTestInputVC.swift */,
+				B43B88E01F196560002E22E9 /* CardTestCheckVC.swift */,
 			);
 			name = "Cards Test";
 			sourceTree = "<group>";
@@ -334,16 +337,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B481AA3B1EFACB2F0021F8EF /* CardTestViewController.swift in Sources */,
 				B44F6E9B1EEE263600BE43BF /* NumbersViewController.swift in Sources */,
 				B44F6E6F1EEE259D00BE43BF /* ViewController.swift in Sources */,
 				B481AA321EF2E5100021F8EF /* NumbersCheckViewController.swift in Sources */,
 				B481AA7A1F02C6440021F8EF /* UserInputViewController.swift in Sources */,
 				B44F6E6D1EEE259D00BE43BF /* AppDelegate.swift in Sources */,
 				B481AA3D1EFADCC60021F8EF /* StartViewController.swift in Sources */,
-				B481AA7C1F02EA330021F8EF /* CardInputViewController.swift in Sources */,
+				B43B88E31F1A2957002E22E9 /* CardTestInputVC.swift in Sources */,
 				B44F6E9D1EEE2D6500BE43BF /* InputViewController.swift in Sources */,
 				B481AA301EF2C18E0021F8EF /* UtilsViewController.swift in Sources */,
+				B43B88DF1F196546002E22E9 /* CardTestVC.swift in Sources */,
+				B43B88E11F196560002E22E9 /* CardTestCheckVC.swift in Sources */,
 				B451D9601F08C9A2007EA12F /* CheckViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,14 +1,14 @@
 //
-//  CardInputViewController.swift
+//  CardTestInputVC.swift
 //  Memory-Trainer
 //
-//  Created by Rio Lynk on 6/27/17.
+//  Created by Rio Lynk on 7/15/17.
 //  Copyright © 2017 Lampshade Software. All rights reserved.
 //
 
 import UIKit
 
-class CardInputViewController: UserInputViewController {
+class CardTestInputVC: UserInputViewController {
     
     //VARIABLES
     var cardOrder: [Int]!
@@ -24,6 +24,7 @@ class CardInputViewController: UserInputViewController {
     }
     
     //FUNCTIONS
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,5 +38,6 @@ class CardInputViewController: UserInputViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
 }
