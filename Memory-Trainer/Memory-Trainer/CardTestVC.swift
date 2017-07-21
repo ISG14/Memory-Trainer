@@ -13,7 +13,7 @@ class CardTestVC: StartViewController {
     //VARIABLES
     var cardWidth = 0.0
     var cardHeight = 0.0
-    var cardOrder: [String]!
+    var cardOrder: [Int]!
     var indexToPick = 0
     var isGoingLeft = false
     
@@ -50,16 +50,8 @@ class CardTestVC: StartViewController {
             initLevel()
         }
     }
-    @IBAction func finishedButtonPressed(_ sender: Any) {
-        timer.invalidate()
-    }
     
     //FUNCTIONS
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as? CheckViewController
-        destination?.digitArray = cardOrder
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,10 +79,10 @@ class CardTestVC: StartViewController {
         }
         
         //Loop that randomly pulls from array thats in order, puts them in a new array then removes num from first array
-        cardOrder = [String]()
+        cardOrder = [Int]()
         for _ in 0...51{
             let rand = Int(arc4random_uniform(UInt32(inOrderArray.count)))
-            cardOrder.append(String(inOrderArray[rand]))
+            cardOrder.append(inOrderArray[rand])
             inOrderArray.remove(at: rand)
         }
     }

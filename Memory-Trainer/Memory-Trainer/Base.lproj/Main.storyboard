@@ -96,9 +96,6 @@
                                 <state key="normal" title="Check">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="Dhp-B5-K2c" kind="show" id="QX0-px-eAo"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui8-i8-Zng">
                                 <rect key="frame" x="139" y="286" width="97" height="30"/>
@@ -128,6 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCU-fE-t6r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="2855" y="-680"/>
         </scene>
         <!--Check View Controller-->
@@ -147,6 +145,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ars-A5-hej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3958" y="-679"/>
+=======
+            <point key="canvasLocation" x="2806" y="-679"/>
+>>>>>>> parent of 095e507... save
         </scene>
         <!--Numbers View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -263,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doD-3R-AXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2871" y="134"/>
+            <point key="canvasLocation" x="2822" y="134"/>
         </scene>
         <!--Numbers Check View Controller-->
         <scene sceneID="joe-aM-vOu">
@@ -349,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P18-AS-Hal" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="-269"/>
+            <point key="canvasLocation" x="899" y="134"/>
         </scene>
         <!--Custom Nav-->
         <scene sceneID="wIc-aj-Jy9">
@@ -369,7 +370,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xm3-x9-x8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-345" y="-269"/>
+            <point key="canvasLocation" x="-47" y="134"/>
         </scene>
     </scenes>
 </document>

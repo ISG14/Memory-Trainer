@@ -21,11 +21,7 @@ class StartViewController: UIViewController {
     
     
     //ACTIONS
-    func readyButtonPressed(sender: Any) {
-        readyButton.isHidden = true
-        timerLabel.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.countdown)), userInfo: nil, repeats: true)
-    }
+    
     
     //FUNCTIONS
     override func viewDidLoad() {
@@ -74,6 +70,12 @@ class StartViewController: UIViewController {
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+    }
+    
+    func readyButtonPressed(sender: Any) {
+        readyButton.isHidden = true
+        timerLabel.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.countdown)), userInfo: nil, repeats: true)
     }
     
     func countdown(){

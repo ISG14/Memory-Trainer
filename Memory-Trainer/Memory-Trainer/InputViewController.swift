@@ -24,6 +24,12 @@ class InputViewController: UserInputViewController {
     }
 
     //FUNCTIONS
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? NumbersCheckViewController
+        destination?.userGuesses = userGuesses
+        destination?.digitArray = digitArray
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

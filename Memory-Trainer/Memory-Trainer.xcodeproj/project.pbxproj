@@ -19,7 +19,6 @@
 		B44F6E8D1EEE259E00BE43BF /* Memory_TrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E8C1EEE259E00BE43BF /* Memory_TrainerUITests.swift */; };
 		B44F6E9B1EEE263600BE43BF /* NumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */; };
 		B44F6E9D1EEE2D6500BE43BF /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */; };
-		B451D9601F08C9A2007EA12F /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B451D95F1F08C9A2007EA12F /* CheckViewController.swift */; };
 		B481AA301EF2C18E0021F8EF /* UtilsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */; };
 		B481AA321EF2E5100021F8EF /* NumbersCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */; };
 		B481AA3D1EFADCC60021F8EF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481AA3C1EFADCC60021F8EF /* StartViewController.swift */; };
@@ -62,7 +61,6 @@
 		B44F6E8E1EEE259E00BE43BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B44F6E9A1EEE263600BE43BF /* NumbersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersViewController.swift; sourceTree = "<group>"; };
 		B44F6E9C1EEE2D6500BE43BF /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
-		B451D95F1F08C9A2007EA12F /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		B481AA2F1EF2C18E0021F8EF /* UtilsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsViewController.swift; sourceTree = "<group>"; };
 		B481AA311EF2E5100021F8EF /* NumbersCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersCheckViewController.swift; sourceTree = "<group>"; };
 		B481AA3C1EFADCC60021F8EF /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				B44F6E701EEE259D00BE43BF /* Main.storyboard */,
 				B481AA3C1EFADCC60021F8EF /* StartViewController.swift */,
 				B481AA791F02C6440021F8EF /* UserInputViewController.swift */,
-				B451D95F1F08C9A2007EA12F /* CheckViewController.swift */,
 			);
 			path = "Memory-Trainer";
 			sourceTree = "<group>";
@@ -346,9 +343,12 @@
 				B43B88E31F1A2957002E22E9 /* CardTestInputVC.swift in Sources */,
 				B44F6E9D1EEE2D6500BE43BF /* InputViewController.swift in Sources */,
 				B481AA301EF2C18E0021F8EF /* UtilsViewController.swift in Sources */,
+<<<<<<< HEAD
 				B43B88DF1F196546002E22E9 /* CardTestVC.swift in Sources */,
 				B43B88E11F196560002E22E9 /* CardTestCheckVC.swift in Sources */,
 				B451D9601F08C9A2007EA12F /* CheckViewController.swift in Sources */,
+=======
+>>>>>>> parent of 095e507... save
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
